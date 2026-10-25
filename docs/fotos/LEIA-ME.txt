@@ -1,0 +1,13 @@
+FOTOS DOS PRATOS
+================
+
+As fotos atuais vieram do Instagram da loja (@kabana_do_churrasco), já
+recortadas sem texto e convertidas em WebP (até 1200px). O arquivo de cada
+item é registrado em src/data/fotos.ts pelo id do item (src/data/menu.ts).
+
+Para trocar ou acrescentar uma foto:
+  1. salve o arquivo aqui (JPG ou WebP, quadrado ou 4:3, lado maior a partir de 1000px, abaixo de 300kb);
+  2. escreva a linha em src/data/fotos.ts com o id EXATO do item.
+
+Item com foto vira destaque e ganha miniatura na lista; item sem foto fica em texto.
+A capa do Início é capa.webp (também em LOJA.capa, em src/data/loja.ts); os banners ficam em /public/banners.

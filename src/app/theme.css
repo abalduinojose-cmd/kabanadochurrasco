@@ -1,0 +1,78 @@
+/* ============================================================
+   KABANA DO CHURRASCO ─ tema claro, base iFood (24/10/2026)
+   Branco, texto grafite, laranja da Kabana no lugar do vermelho do iFood,
+   verde para taxa e promoção. A marca vive na capa, no avatar e no logo.
+   ============================================================ */
+
+@theme {
+  /* ---------- superfícies ---------- */
+  --color-fundo: #ffffff;
+  --color-fundo-2: #f7f7f7; /* blocos de apoio, segmentado, esqueleto */
+  --color-cartao: #ffffff;
+  --color-borda: #ececec;
+  --color-divisor: #f1f1f1;
+  --color-foto: #efefef; /* fundo de miniatura sem foto */
+
+  /* ---------- texto ---------- */
+  --color-texto: #1f1f1f;
+  --color-texto-2: #6b6b6b; /* secundário, 5,25:1 */
+  --color-texto-3: #9a9a9a; /* placeholder e desabilitado, não é texto de leitura */
+
+  /* ---------- marca ---------- */
+  --color-fogo: #ff6a00; /* preenchimento: botão primário, sacola */
+  --color-fogo-texto: #b83f00; /* laranja como TEXTO sobre branco, 5,6:1 */
+  --color-fogo-suave: #fff1e8; /* fundo de chip e cupom */
+  --color-carvao: #0b0b0b; /* texto sobre o laranja, capa, avatar */
+
+  /* ---------- semântica ---------- */
+  --color-verde: #1e8e4b; /* taxa, promoção, aberto */
+  --color-verde-suave: #e9f6ee;
+  --color-vermelho: #d6222f; /* erro */
+  --color-vermelho-suave: #fdecee;
+
+  /* ---------- tipografia ----------
+     Figtree em tudo (a mais próxima da fonte do iFood). Anton só no logo. */
+  --font-corpo: var(--fonte-figtree), system-ui, -apple-system, sans-serif;
+  --font-display: var(--fonte-anton), 'Arial Narrow', system-ui, sans-serif;
+
+  --text-legenda: 0.75rem;
+  --text-legenda--line-height: 1.3;
+  --text-corpo: 0.875rem;
+  --text-corpo--line-height: 1.45;
+  --text-item: 1rem;
+  --text-item--line-height: 1.25;
+  --text-secao: 1.125rem;
+  --text-secao--line-height: 1.2;
+  --text-titulo: 1.375rem;
+  --text-titulo--line-height: 1.15;
+
+  /* ---------- forma (o iFood é 8/12, não pílula) ---------- */
+  --radius-botao: 8px;
+  --radius-campo: 8px;
+  --radius-cartao: 12px;
+  --radius-folha: 20px;
+  --radius-pilula: 999px;
+
+  /* ---------- barras ---------- */
+  --altura-abas: 56px;
+  --altura-sacola: 56px;
+
+  /* ---------- movimento ---------- */
+  --ease-brasa: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-assenta: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-apoio: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-sai: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+/* ============================================================
+   TABELA DE CONTRASTE ─ sobre branco #ffffff (scripts/contraste.mjs)
+
+   --color-texto       #1f1f1f  16.1:1   AAA
+   --color-texto-2     #6b6b6b   5.3:1   AA / AAA grande
+   --color-fogo-texto  #b83f00   5.6:1   AA / AAA grande
+   --color-verde       #1e8e4b   4.6:1   AA
+   --color-vermelho    #d6222f   4.9:1   AA
+   --color-fogo        #ff6a00   2.9:1   REPROVA como texto: só preenchimento
+   --color-carvao sobre --color-fogo    6.85:1  (botão primário, sacola)
+   ============================================================ */

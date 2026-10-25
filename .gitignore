@@ -1,0 +1,25 @@
+# dependências e saídas de build
+node_modules/
+.next/
+out/
+.pages-test/
+*.tsbuildinfo
+next-env.d.ts
+
+# gerados pelo @serwist/next em cada build (entram em docs/ pelo build:pages)
+public/sw.js
+public/sw.js.map
+public/swe-worker-*.js
+
+# ambiente e sistema
+.env*
+.DS_Store
+Thumbs.db
+npm-debug.log*
+
+# material interno, não faz parte do app publicado
+scripts/.cache-fotos/
+docs/superpowers/
+docs/maquete-ifood.html
+.jez/
+.claude/

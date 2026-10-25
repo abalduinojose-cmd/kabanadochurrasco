@@ -1,0 +1,15 @@
+{
+  /*
+   * O service worker roda em WorkerGlobalScope, não no DOM. Misturar as duas
+   * libs no mesmo programa gera identificador duplicado (self, caches, fetch),
+   * então ele é verificado à parte, com a lib certa.
+   */
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ESNext", "WebWorker"],
+    "types": [],
+    "noEmit": true
+  },
+  "include": ["src/app/sw.ts"],
+  "exclude": []
+}

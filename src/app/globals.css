@@ -1,0 +1,188 @@
+@import 'tailwindcss';
+@import './theme.css';
+
+/* ============================================================
+   BASE
+   ============================================================ */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    background-color: var(--color-fundo);
+  }
+
+  body {
+    background-color: var(--color-fundo);
+    color: var(--color-texto);
+    font-family: var(--font-corpo);
+    font-size: var(--text-corpo);
+    line-height: var(--text-corpo--line-height);
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none;
+    touch-action: manipulation;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-fogo);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  button,
+  a[role='button'],
+  [role='option'] {
+    min-height: 44px;
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-fogo);
+    color: var(--color-carvao);
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ============================================================
+   UTILITÁRIOS DO APP
+   ============================================================ */
+
+/* Esqueleto cinza com shimmer, como o do iFood; morre ao carregar. */
+@keyframes esqueleto {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+@utility esqueleto {
+  background: linear-gradient(
+    90deg,
+    var(--color-fundo-2) 0%,
+    var(--color-fundo-2) 35%,
+    #ffffff 50%,
+    var(--color-fundo-2) 65%,
+    var(--color-fundo-2) 100%
+  );
+  background-size: 200% 100%;
+  animation: esqueleto 1.3s linear infinite;
+}
+
+/* Trilho horizontal com encaixe. */
+@utility trilho {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 1rem;
+  padding-inline: 1rem;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  & > * {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+  }
+}
+
+@utility sem-barra {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Espaço no fim do conteúdo para as barras fixas (abas + sacola). */
+@utility pb-barras {
+  padding-bottom: calc(var(--altura-abas) + var(--altura-sacola) + env(safe-area-inset-bottom) + 2rem);
+}
+
+@utility pb-seguro {
+  padding-bottom: max(0.625rem, env(safe-area-inset-bottom));
+}
+
+@utility pt-seguro {
+  padding-top: max(0.5rem, env(safe-area-inset-top));
+}
+
+/* Separador grosso entre blocos, como o do iFood. */
+@utility separador {
+  height: 8px;
+  background: var(--color-fundo-2);
+}
+
+/* Sombra única do app (cartões flutuantes). */
+@utility sombra-flutuante {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+/* ============================================================
+   MOVIMENTO
+   ============================================================ */
+
+@keyframes sobe {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-entra {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Ponto de "aberta": status ao vivo, o único laço. */
+@keyframes pulsa {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Troca de aba: o iFood troca com um fade curto, sem deslizar. */
+::view-transition-old(aba) {
+  animation: aba-sai 120ms linear forwards;
+}
+::view-transition-new(aba) {
+  animation: aba-entra 160ms var(--ease-apoio);
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+@keyframes aba-sai {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes aba-entra {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
