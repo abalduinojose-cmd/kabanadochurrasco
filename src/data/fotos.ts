@@ -2,22 +2,23 @@
  * Mapa de fotos: id do item (menu.ts) -> arquivo em /public/fotos.
  *
  * GERADO por scripts/fotos-instagram.mjs (edite o MAPA de lá e rode de novo).
- * Fotos do Instagram da loja (@kabana_do_churrasco), escolhidas pela legenda
- * do post (ou, quando a legenda não nomeia o prato, pela descrição do item no
- * instadelivery), conferidas uma a uma e recortadas para tirar textos e logos
- * sobrepostos; WebP de até 1200px, quadradas ou perto de 4:3. Para uma foto
- * nova fora do Instagram: salve em public/fotos/ e escreva a linha aqui com o
- * id EXATO do item. Item com foto vira destaque e ganha miniatura na lista.
+ * Pratos: fotos do Instagram da loja (@kabana_do_churrasco), escolhidas pela
+ * legenda do post (ou, quando a legenda não nomeia o prato, pela descrição do
+ * item no instadelivery), recortadas para tirar textos e logos sobrepostos.
+ * Bebidas e bomboniere: data/fotos-bebidas.ts (scripts/fotos-bebidas.mjs).
+ * Para uma foto nova fora desses scripts: salve em public/fotos/ e escreva a
+ * linha aqui com o id EXATO do item.
  *
  * Ficaram SEM foto (nenhum post limpo, só arte com texto por cima): Kafta,
  * Frango e Medalhão bovino (espetinhos), BIG K, Kabana Burguer I e III,
- * Toscano, Cheddar e Bacon, Kombo Kids, Trio Kabana e o resto do cardápio.
+ * Toscano, Cheddar e Bacon, Kombo Kids, Trio Kabana e parte das porções.
  */
+
+import { FOTOS_BEBIDAS } from './fotos-bebidas';
 
 export const FOTOS: Readonly<Record<string, string>> = {
   'porcao-de-peixes': '/fotos/porcao-de-peixes.webp', // instagram.com/p/Dd9f5KVx3Yl (legenda nomeia o prato)
   'batata-frita-com-carne-seca-com-catupiry': '/fotos/batata-frita-com-carne-seca-com-catupiry.webp', // instagram.com/p/DbMFcnERDo4 (legenda nomeia o prato)
-  'caipirinha-kabana': '/fotos/caipirinha-kabana.webp', // instagram.com/p/DRAClsykXWc (legenda nomeia o prato)
   'drinks-kabana': '/fotos/drinks-kabana.webp', // instagram.com/p/DWJvrThEVUr (legenda nomeia o prato)
   'burguer-de-coracao': '/fotos/burguer-de-coracao.webp', // instagram.com/p/DMtEwI3xwvd (legenda nomeia o prato)
   'morango-com-chocolate': '/fotos/morango-com-chocolate.webp', // instagram.com/p/DMi7eBMR9uS (legenda nomeia o prato)
@@ -40,5 +41,13 @@ export const FOTOS: Readonly<Record<string, string>> = {
 
 /** Foto do item, se houver. O `imageUrl` do próprio menu.ts tem preferência. */
 export function fotoDoItem(id: string, imageUrl?: string): string | undefined {
-  return imageUrl ?? FOTOS[id];
+  return imageUrl ?? FOTOS[id] ?? FOTOS_BEBIDAS[id];
+}
+
+/**
+ * Foto de produto em fundo branco (lata, garrafa, embalagem): mostrada inteira
+ * (contain) e mesclada ao cinza do cartão, nunca cortada.
+ */
+export function ehFotoDeProduto(src: string | undefined): boolean {
+  return src?.startsWith('/fotos/produtos/') ?? false;
 }

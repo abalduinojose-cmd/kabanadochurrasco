@@ -1,15 +1,17 @@
 'use client';
 
 import Link from 'next/link';
+import { FotoProduto } from '@/components/inicio/FotoProduto';
 import { Stepper } from '@/components/ui/Stepper';
 import { useCarrinho } from '@/store/cart';
+import { fotoDoItem } from '@/data/fotos';
 import { formatBRL } from '@/lib/money';
 import { precoLinha, type LinhaCarrinho } from '@/types/carrinho';
 
 /**
- * Uma linha da sacola, como no iFood: nome, opções discriminadas, preço da
- * linha, e o seletor com a lixeira quando está em 1. As opções aparecem com o
- * mesmo detalhamento que vai na mensagem do WhatsApp.
+ * Um item da sacola: miniatura (foto, produto ou a marca), nome, as opções
+ * com o mesmo detalhamento da mensagem do WhatsApp, "Editar", o preço da
+ * linha e o seletor em pílula, com a lixeira quando está em 1.
  */
 export function LinhaSacola({ linha }: { linha: LinhaCarrinho }) {
   const alterar = useCarrinho((s) => s.alterarQuantidade);
@@ -17,42 +19,44 @@ export function LinhaSacola({ linha }: { linha: LinhaCarrinho }) {
 
   const inclusos = linha.opcoes.filter((o) => o.precoCents === 0);
   const pagos = linha.opcoes.filter((o) => o.precoCents > 0);
+  const detalhes = inclusos.length > 0 || pagos.length > 0 || Boolean(linha.observacao);
 
   return (
-    <li className="border-b border-divisor py-4 last:border-b-0">
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0 flex-1">
-          <p className="text-item font-semibold leading-tight text-texto">{linha.nome}</p>
-          {(inclusos.length > 0 || pagos.length > 0 || linha.observacao) && (
-            <ul className="mt-1 space-y-0.5 text-[13px] leading-snug text-texto-2">
-              {inclusos.map((o) => (
-                <li key={`${o.grupoId}-${o.opcaoId}`}>
-                  {o.grupoNome}: {o.nome}
-                </li>
-              ))}
-              {pagos.map((o) => (
-                <li key={`${o.grupoId}-${o.opcaoId}`}>
-                  + {o.nome} ({formatBRL(o.precoCents)})
-                </li>
-              ))}
-              {linha.observacao && <li className="italic">Obs: {linha.observacao}</li>}
-            </ul>
-          )}
-        </div>
-        <span className="shrink-0 text-[15px] font-extrabold tabular-nums text-texto">{formatBRL(precoLinha(linha))}</span>
-      </div>
+    <li className="flex gap-3.5 py-4">
+      <FotoProduto src={fotoDoItem(linha.itemId)} alt="" sizes="72px" className="size-[72px] rounded-[14px]" respiro="p-1.5" />
 
-      <div className="mt-3 flex items-center justify-between gap-3">
-        <Link href={`/item?id=${encodeURIComponent(linha.itemId)}`} className="text-[13px] font-semibold text-fogo-texto">
-          Editar
-        </Link>
-        <Stepper
-          compacto
-          valor={linha.quantidade}
-          aoMudar={(q) => alterar(linha.uid, q)}
-          aoRemover={() => remover(linha.uid)}
-          rotulo={linha.nome}
-        />
+      <div className="min-w-0 flex-1">
+        <div className="flex items-start justify-between gap-3">
+          <p className="text-[15px] font-bold leading-tight text-texto">{linha.nome}</p>
+          <span className="shrink-0 text-[15px] font-extrabold tabular-nums text-texto">{formatBRL(precoLinha(linha))}</span>
+        </div>
+        {detalhes && (
+          <ul className="mt-1 space-y-0.5 text-[12.5px] leading-snug text-texto-2">
+            {inclusos.map((o) => (
+              <li key={`${o.grupoId}-${o.opcaoId}`}>
+                {o.grupoNome}: {o.nome}
+              </li>
+            ))}
+            {pagos.map((o) => (
+              <li key={`${o.grupoId}-${o.opcaoId}`}>
+                + {o.nome} ({formatBRL(o.precoCents)})
+              </li>
+            ))}
+            {linha.observacao && <li className="italic">Obs: {linha.observacao}</li>}
+          </ul>
+        )}
+        <div className="mt-2.5 flex items-center justify-between gap-3">
+          <Link href={`/item?id=${encodeURIComponent(linha.itemId)}`} className="inline-flex min-h-10 items-center text-[13px] font-bold text-fogo-texto">
+            Editar
+          </Link>
+          <Stepper
+            compacto
+            valor={linha.quantidade}
+            aoMudar={(q) => alterar(linha.uid, q)}
+            aoRemover={() => remover(linha.uid)}
+            rotulo={linha.nome}
+          />
+        </div>
       </div>
     </li>
   );

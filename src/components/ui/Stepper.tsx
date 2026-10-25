@@ -3,9 +3,9 @@
 import { Minus, Plus, Trash2 } from 'lucide-react';
 
 /**
- * Seletor de quantidade do iFood: caixa com borda, menos à esquerda, mais à
- * direita. Com `aoRemover`, o menos vira lixeira quando chega ao mínimo
- * (é assim na sacola); sem ele, o menos só desabilita (página do item).
+ * Seletor de quantidade em pílula: menos, número, mais. Com `aoRemover`, o
+ * menos vira lixeira quando chega ao mínimo (na sacola); sem ele, o menos só
+ * desabilita (página do item). O mais é o botão cheio da marca.
  */
 
 type Props = {
@@ -21,21 +21,25 @@ type Props = {
 export function Stepper({ valor, aoMudar, rotulo, min = 1, max = 99, aoRemover, compacto = false }: Props) {
   const noMinimo = valor <= min;
   const removeNoMinimo = noMinimo && aoRemover !== undefined;
-  const caixa = compacto ? 'h-9' : 'h-12';
-  const botao = `grid ${compacto ? 'size-9' : 'size-12'} min-h-0 place-items-center rounded-botao text-fogo-texto disabled:text-texto-3`;
+  const lado = compacto ? 'size-8' : 'size-10';
+  const icone = compacto ? 'size-4' : 'size-[18px]';
 
   return (
-    <div role="group" aria-label={`Quantidade de ${rotulo}`} className={`inline-flex ${caixa} shrink-0 items-center rounded-botao border border-borda bg-cartao`}>
+    <div
+      role="group"
+      aria-label={`Quantidade de ${rotulo}`}
+      className={`inline-flex shrink-0 items-center gap-1 rounded-full bg-fundo-2 p-1 ${compacto ? 'h-10' : 'h-12'}`}
+    >
       <button
         type="button"
         onClick={() => (removeNoMinimo ? aoRemover?.() : aoMudar(valor - 1))}
         disabled={noMinimo && !removeNoMinimo}
         aria-label={removeNoMinimo ? `Remover ${rotulo}` : `Diminuir ${rotulo}`}
-        className={botao}
+        className={`grid ${lado} min-h-0 place-items-center rounded-full bg-cartao text-texto shadow-[0_1px_2px_rgba(0,0,0,0.1)] disabled:bg-transparent disabled:text-texto-3 disabled:shadow-none`}
       >
-        {removeNoMinimo ? <Trash2 className="size-[18px]" aria-hidden /> : <Minus className="size-[18px]" aria-hidden />}
+        {removeNoMinimo ? <Trash2 className={`${icone} text-vermelho`} aria-hidden /> : <Minus className={icone} strokeWidth={2.5} aria-hidden />}
       </button>
-      <output aria-live="polite" className="min-w-7 text-center text-[15px] font-bold tabular-nums text-texto">
+      <output aria-live="polite" className={`text-center font-extrabold tabular-nums text-texto ${compacto ? 'min-w-6 text-[14px]' : 'min-w-8 text-[16px]'}`}>
         {valor}
       </output>
       <button
@@ -43,9 +47,9 @@ export function Stepper({ valor, aoMudar, rotulo, min = 1, max = 99, aoRemover, 
         onClick={() => aoMudar(Math.min(max, valor + 1))}
         disabled={valor >= max}
         aria-label={`Aumentar ${rotulo}`}
-        className={botao}
+        className={`grid ${lado} min-h-0 place-items-center rounded-full bg-fogo text-carvao disabled:bg-fundo-2 disabled:text-texto-3`}
       >
-        <Plus className="size-[18px]" aria-hidden />
+        <Plus className={icone} strokeWidth={2.5} aria-hidden />
       </button>
     </div>
   );

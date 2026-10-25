@@ -150,16 +150,15 @@ export const LOJA = {
 
   chavePix: '24992811184' as string, // chave celular, a mesma do WhatsApp da loja
 
-  // TODO ─ nota real do Google, ex.: { valor: 4.8, total: 132 }. Com null o
-  // espaço da nota simplesmente não aparece. Nunca pôr número inventado.
-  nota: null as Nota,
+  // Nota real do perfil no Google Maps (25/10/2026: 4,8 com 49 avaliações).
+  // Atualizar junto com scripts/avaliacoes-google.json. Nunca pôr número inventado.
+  nota: { valor: 4.8, total: 49 } as Nota,
 
-  // TODO ─ ponto exato do nº 236 (a geocodificação só acha a estrada). Com null,
-  // "Onde fica" mostra o endereço e o link de busca no mapa.
-  coordenadas: null as Coordenadas,
+  // Ponto do perfil no Google Maps (o Google escreve "nº 164"; o instadelivery, 236).
+  coordenadas: { lat: -22.2505495, lng: -43.0724003 } as Coordenadas,
 
   // Foto da capa do Início (do Instagram da loja). Sem ela, a capa mostra a marca.
-  capa: '/fotos/capa.webp' as string | null,
+  capas: ['/fotos/capa-1.webp', '/fotos/capa-2.webp'] as readonly string[],
 
   // TODO ─ promoção real, se houver, ex.: { titulo: 'Terça do espeto', texto: '3 por R$ 30' }.
   // Nunca inventar promoção: null esconde a faixa.

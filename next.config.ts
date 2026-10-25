@@ -25,6 +25,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Sem o botão "N" do Next no canto da tela em desenvolvimento.
   devIndicators: false,
+  // Fotos prontas em dois tamanhos (miniatura e inteira), sem o otimizador do
+  // Next: ver src/lib/image-loader.ts e scripts/miniaturas.mjs.
+  images: { loader: 'custom', loaderFile: './src/lib/image-loader.ts' },
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
     ...(siteUrl ? { NEXT_PUBLIC_SITE_URL: siteUrl } : {}),
@@ -36,8 +39,6 @@ const nextConfig: NextConfig = {
         // Gera item/index.html em vez de item.html: o Pages serve o índice da
         // pasta, então a página abre com ou sem barra final.
         trailingSlash: true,
-        // Sem servidor, as fotos vão como estão (já são WebP de até 1200px).
-        images: { loader: 'custom' as const, loaderFile: './src/lib/image-loader.ts' },
       }
     : {}),
 };

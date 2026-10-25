@@ -2,7 +2,8 @@
 
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import type { Cents } from '@/lib/money';
+import { toCents, type Cents } from '@/lib/money';
+import { MENU } from '@/data/cardapio';
 import {
   precoLinha,
   type LinhaCarrinho,
@@ -153,6 +154,16 @@ export const useCarrinho = create<CarrinhoStore>()(
           estado.linhas = [];
           estado.criadoEm = null;
         }
+        // Cardápio mudou desde a última visita: item que saiu (ou ficou
+        // indisponível) cai da sacola, e o preço base volta a ser o de hoje.
+        estado.linhas = estado.linhas.flatMap((l) => {
+          for (const c of MENU) {
+            const item = c.items.find((i) => i.id === l.itemId);
+            if (item) return item.available ? [{ ...l, categoriaId: c.id, nome: item.nome, precoBaseCents: toCents(item.preco) }] : [];
+          }
+          return [];
+        });
+        if (estado.linhas.length === 0) estado.criadoEm = null;
         estado.removida = null;
         estado.hidratado = true;
       },

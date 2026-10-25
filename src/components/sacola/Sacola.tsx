@@ -1,13 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { AlertTriangle, ShoppingBag } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Plus, ShoppingBag } from 'lucide-react';
 import { LinhaSacola } from './LinhaSacola';
-import { ResumoEntrega } from './ResumoEntrega';
+import { ComoReceber } from './ComoReceber';
 import { DesfazerToast } from '@/components/cart/DesfazerToast';
 import { PecaTambem } from '@/components/inicio/PecaTambem';
 import { useEscolhaEntrega } from '@/components/inicio/EscolhaEntrega';
-import { Button, LinkBotao } from '@/components/ui/Button';
+import { BrandMark } from '@/components/layout/BrandMark';
+import { StatusLoja } from '@/components/layout/StatusLoja';
+import { LinkBotao } from '@/components/ui/Button';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { useCarrinho, selSubtotal, selUnidadesDeEspeto } from '@/store/cart';
 import { useEntrega } from '@/store/entrega';
@@ -17,10 +19,11 @@ import { avisosDoCarrinho, CATEGORIAS_DE_ESPETO } from '@/lib/regras-pedido';
 import { LOJA } from '@/data/loja';
 
 /**
- * A sacola do iFood: itens com o seletor, "Adicionar mais itens", a barra de
- * progresso até o pedido mínimo, como receber (com a taxa do bairro),
- * "Complete seu pedido", resumo de valores e o Continuar fixo. Os avisos
- * vêm de `lib/regras-pedido.ts`, a mesma função que bloqueia no checkout.
+ * A sacola: a loja no topo, os itens em cartão com miniatura e seletor em
+ * pílula, "Adicionar mais itens", "Como você quer receber?" (a escolha mora
+ * aqui, no fim do pedido), "Complete seu pedido", o resumo de valores e um
+ * botão único embaixo com o total. Os avisos vêm de `lib/regras-pedido.ts`,
+ * a mesma função que bloqueia no checkout.
  */
 export function Sacola() {
   const hidratado = useCarrinho((s) => s.hidratado);
@@ -29,11 +32,12 @@ export function Sacola() {
   const espetos = useCarrinho(selUnidadesDeEspeto(CATEGORIAS_DE_ESPETO));
   const modo = useEntrega((s) => s.modo);
   const bairro = useEntrega((s) => s.bairro);
-  const abrirEntrega = useEscolhaEntrega((s) => s.abrir);
+  const abrirBairro = useEscolhaEntrega((s) => s.abrirBairro);
 
   if (!hidratado) {
     return (
       <div className="space-y-3 p-4">
+        <Skeleton className="h-16 w-full" />
         <Skeleton className="h-24 w-full" />
         <Skeleton className="h-24 w-full" />
       </div>
@@ -42,12 +46,16 @@ export function Sacola() {
 
   if (linhas.length === 0) {
     return (
-      <div className="px-6 py-20 text-center">
-        <ShoppingBag className="mx-auto size-12 text-texto-3" strokeWidth={1.5} aria-hidden />
-        <p className="mt-4 text-[18px] font-extrabold text-texto">Sua sacola está vazia</p>
-        <p className="mx-auto mt-2 max-w-[28ch] text-[14px] text-texto-2">Adicione itens do cardápio para fazer o pedido.</p>
-        <LinkBotao href="/" className="mt-6">
-          Ver cardápio
+      <div className="px-6 py-16 text-center">
+        <div className="relative mx-auto grid size-28 place-items-center rounded-full bg-fogo-suave">
+          <ShoppingBag className="size-11 text-fogo-texto" strokeWidth={1.75} aria-hidden />
+        </div>
+        <p className="mt-6 text-[20px] font-extrabold tracking-[-0.01em] text-texto">Sua sacola está vazia</p>
+        <p className="mx-auto mt-2 max-w-[30ch] text-[14px] leading-relaxed text-texto-2">
+          Escolha um burger, uns espetinhos ou uma tábua para dividir. A gente monta o pedido para você mandar no WhatsApp.
+        </p>
+        <LinkBotao href="/" className="mt-7 px-8">
+          Ver o cardápio
         </LinkBotao>
       </div>
     );
@@ -64,22 +72,43 @@ export function Sacola() {
 
   return (
     <>
-      <div className="px-4">
-        <p className="pt-4 text-[13px] text-texto-2">
-          {itens} {itens === 1 ? 'item' : 'itens'} na {LOJA.nome}
-        </p>
-        <ul>
+      {/* A loja, como no topo da sacola do iFood. */}
+      <div className="flex items-center gap-3 px-4 pt-4">
+        <span className="grid size-11 shrink-0 place-items-center overflow-hidden rounded-full bg-carvao">
+          <BrandMark recorte className="w-9" />
+        </span>
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-[15px] font-extrabold text-texto">{LOJA.nome}</p>
+          <StatusLoja className="text-[12.5px]" />
+        </div>
+        <Link href="/" className="inline-flex min-h-10 items-center rounded-full bg-fundo-2 px-3.5 text-[13px] font-bold text-texto">
+          Cardápio
+        </Link>
+      </div>
+
+      <section aria-label="Itens da sacola" className="mx-4 mt-4 rounded-[20px] bg-cartao px-4 shadow-[0_0_0_1px_var(--color-borda),0_8px_24px_-16px_rgba(0,0,0,0.25)]">
+        <div className="flex items-center justify-between pt-4">
+          <h2 className="text-[16px] font-extrabold text-texto">Seu pedido</h2>
+          <span className="text-[13px] font-medium text-texto-2">
+            {itens} {itens === 1 ? 'item' : 'itens'}
+          </span>
+        </div>
+        <ul className="divide-y divide-divisor">
           {linhas.map((l) => (
             <LinhaSacola key={l.uid} linha={l} />
           ))}
         </ul>
-        <Link href="/" className="flex min-h-12 items-center text-[14px] font-bold text-fogo-texto">
+        <Link
+          href="/"
+          className="-mx-4 flex min-h-[52px] items-center justify-center gap-2 border-t border-dashed border-borda text-[14px] font-bold text-fogo-texto active:bg-fogo-suave"
+        >
+          <Plus className="size-4" strokeWidth={2.75} aria-hidden />
           Adicionar mais itens
         </Link>
-      </div>
+      </section>
 
       {falta > 0 && (
-        <div className="mx-4 mt-2 rounded-cartao bg-fogo-suave px-3.5 py-3">
+        <div className="mx-4 mt-3 rounded-[16px] bg-fogo-suave px-4 py-3">
           <p className="text-[13px] leading-snug text-texto">
             Faltam <b className="font-bold">{formatBRL(falta)}</b> para o pedido mínimo de {formatBRL(PEDIDO_MINIMO)}.
           </p>
@@ -90,9 +119,9 @@ export function Sacola() {
       )}
 
       {avisos.length > 0 && (
-        <div className="space-y-2 px-4 pt-2">
+        <div className="space-y-2 px-4 pt-3">
           {avisos.map((a) => (
-            <div key={a.id} className="flex items-start gap-2.5 rounded-cartao bg-fogo-suave px-3.5 py-3">
+            <div key={a.id} className="flex items-start gap-2.5 rounded-[16px] bg-fogo-suave px-4 py-3">
               <AlertTriangle className="mt-0.5 size-4 shrink-0 text-fogo-texto" aria-hidden />
               <div className="flex-1">
                 <p className="text-[13px] leading-snug text-texto">{a.mensagem}</p>
@@ -107,24 +136,17 @@ export function Sacola() {
         </div>
       )}
 
-      <div className="separador mt-4" />
-
-      <ResumoEntrega />
-
-      <div className="separador" />
-
       <PecaTambem
         titulo="Complete seu pedido"
         categorias={linhas.map((l) => l.categoriaId)}
         excluir={linhas.map((l) => l.itemId)}
-        className="py-4"
+        className="pt-7"
       />
 
-      <div className="separador" />
+      <ComoReceber />
 
-      <section className="px-4 py-4" aria-label="Resumo de valores">
-        <h2 className="text-[15px] font-bold text-texto">Resumo de valores</h2>
-        <dl className="mt-3 space-y-2 text-[14px]">
+      <section aria-label="Resumo de valores" className="mx-4 mt-7 rounded-[20px] bg-fundo-2 px-4 py-4">
+        <dl className="space-y-2.5 text-[14px]">
           <div className="flex justify-between">
             <dt className="text-texto-2">Subtotal</dt>
             <dd className="tabular-nums text-texto">{formatBRL(subtotal)}</dd>
@@ -135,31 +157,40 @@ export function Sacola() {
               {taxa === 0 ? 'Grátis' : taxa === null ? 'escolha o bairro' : formatBRL(taxa)}
             </dd>
           </div>
-          <div className="flex justify-between border-t border-divisor pt-2 text-[15px] font-extrabold">
-            <dt>Total</dt>
-            <dd className="tabular-nums">{formatBRL(total)}</dd>
+          <div className="flex items-baseline justify-between border-t border-borda pt-3">
+            <dt className="text-[16px] font-extrabold text-texto">Total</dt>
+            <dd className="text-[20px] font-extrabold tabular-nums tracking-[-0.01em] text-texto">{formatBRL(total)}</dd>
           </div>
         </dl>
+        <p className="mt-2 text-[12px] leading-snug text-texto-2">Formas de pagamento: {LOJA.pagamentos.map((p) => p.label).join(', ')}.</p>
       </section>
 
-      <footer className="pb-seguro fixed inset-x-0 bottom-0 z-30 border-t border-divisor bg-cartao px-4 pt-3">
-        <div className="mx-auto flex max-w-2xl items-center gap-4">
-          <div className="shrink-0">
-            <p className="text-legenda text-texto-2">{taxa === null ? 'Total sem entrega' : 'Total'}</p>
-            <p className="text-[17px] font-extrabold tabular-nums text-texto">{formatBRL(total)}</p>
-          </div>
+      <footer className="pb-seguro fixed inset-x-0 bottom-0 z-30 border-t border-divisor bg-cartao/95 px-4 pt-3 backdrop-blur-md">
+        <div className="mx-auto max-w-2xl">
           {bloqueado ? (
-            <Button className="flex-1" disabled>
-              Continuar
-            </Button>
+            <button type="button" disabled className="flex h-14 w-full items-center justify-center rounded-[16px] bg-fundo-2 text-[15px] font-bold text-texto-3">
+              Ajuste o pedido para continuar
+            </button>
           ) : precisaDeBairro ? (
-            <Button className="flex-1" onClick={abrirEntrega}>
-              Escolher bairro
-            </Button>
+            <button
+              type="button"
+              onClick={abrirBairro}
+              className="flex h-14 w-full items-center justify-between rounded-[16px] bg-carvao px-5 text-white active:brightness-110"
+            >
+              <span className="text-[15px] font-bold">Escolher o bairro</span>
+              <span className="text-[13px] font-semibold text-white/70">para calcular a entrega</span>
+            </button>
           ) : (
-            <LinkBotao href="/checkout" className="flex-1">
-              Continuar
-            </LinkBotao>
+            <Link
+              href="/checkout"
+              className="flex h-14 w-full items-center justify-between rounded-[16px] bg-fogo px-5 text-carvao active:brightness-95"
+            >
+              <span className="inline-flex items-center gap-2 text-[16px] font-extrabold">
+                Continuar
+                <ArrowRight className="size-5" strokeWidth={2.5} aria-hidden />
+              </span>
+              <span className="text-[16px] font-extrabold tabular-nums">{formatBRL(total)}</span>
+            </Link>
           )}
         </div>
       </footer>

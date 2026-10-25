@@ -2,16 +2,16 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { ShoppingBag } from 'lucide-react';
+import { ChevronRight, ShoppingBag } from 'lucide-react';
 import { useCarrinho, selQuantidade, selSubtotal } from '@/store/cart';
 import { formatBRL } from '@/lib/money';
 import { impacto } from '@/lib/motion/toque';
 import { useValorQueTica } from '@/lib/motion/use-valor-que-tica';
 
 /**
- * "Ver sacola", a barra flutuante do iFood: laranja, acima das abas, com o
- * contador no ícone e o total à direita. Ao receber item, dá um impacto curto
- * e o contador e o total ticam até o valor novo.
+ * "Ver sacola", a barra flutuante acima das abas: escura, com o ícone laranja
+ * e o contador, a quantidade de itens e o total. Ao receber item, dá um
+ * impacto curto e o contador e o total ticam até o valor novo.
  */
 export function BarraSacola() {
   const hidratado = useCarrinho((s) => s.hidratado);
@@ -40,19 +40,25 @@ export function BarraSacola() {
       <div ref={barra} className="mx-auto max-w-2xl" style={{ animation: 'sobe 300ms var(--ease-expo)' }}>
         <Link
           href="/sacola"
-          className="sombra-flutuante flex h-[var(--altura-sacola)] items-center gap-3 rounded-cartao bg-fogo px-4 text-carvao"
+          className="flex h-[var(--altura-sacola)] items-center gap-3 rounded-[18px] bg-carvao pl-2 pr-3 text-white shadow-[0_12px_28px_-10px_rgba(0,0,0,0.55)]"
         >
-          <span className="relative">
-            <ShoppingBag className="size-6" strokeWidth={2} aria-hidden />
+          <span className="relative grid size-10 shrink-0 place-items-center rounded-[13px] bg-fogo text-carvao">
+            <ShoppingBag className="size-5" strokeWidth={2.25} aria-hidden />
             <span
               data-contador-carrinho
-              className="absolute -right-2.5 -top-2 grid min-w-[18px] place-items-center rounded-full bg-carvao px-1 text-[10px] font-extrabold tabular-nums text-fogo"
+              className="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-full bg-white px-1 text-[11px] font-extrabold tabular-nums text-carvao ring-2 ring-carvao"
             >
               {qtdExibida}
             </span>
           </span>
-          <span className="flex-1 text-[15px] font-bold">Ver sacola</span>
-          <span className="text-[15px] font-extrabold tabular-nums">{formatBRL(subtotalExibido)}</span>
+          <span className="min-w-0 flex-1 leading-tight">
+            <span className="block text-[15px] font-bold">Ver sacola</span>
+            <span className="block text-[12px] text-white/60">
+              {quantidade} {quantidade === 1 ? 'item' : 'itens'}
+            </span>
+          </span>
+          <span className="text-[16px] font-extrabold tabular-nums">{formatBRL(subtotalExibido)}</span>
+          <ChevronRight className="size-5 shrink-0 text-white/50" aria-hidden />
         </Link>
       </div>
     </div>

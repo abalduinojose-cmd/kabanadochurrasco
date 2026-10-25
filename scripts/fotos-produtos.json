@@ -1,0 +1,284 @@
+{
+ "energetico-redbull": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/217093-1000-1000/68b5e8b1badd23e105864f29.jpg",
+  "produto": "Energético Red Bull Energy Drink 250ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/energetico-red-bull-energy-drink-250ml-1100398/p"
+ },
+ "monster": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/3078275-1000-1000/865508_2.jpg",
+  "produto": "Bebida Energética Monster Energy Lata 473ml",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/bebida-energetica-monster-energy-lata-473ml-865508/p"
+ },
+ "jack-daniel-s": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/217380-1000-1000/68c2d551faede307e0ab6c29.jpg",
+  "produto": "Whisky Americano Old No. 7 Jack Daniel's Garrafa 700ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/whisky-americano-old-no--7-jack-daniel-s-garrafa-700ml-1879671/p"
+ },
+ "campari": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/3269111-1000-1000/18081_1.jpg",
+  "produto": "Bitter Campari Garrafa 900mL",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/bitter-campari-garrafa-900ml-184748/p",
+  "recorte": [
+   100,
+   0,
+   360,
+   1000
+  ]
+ },
+ "taca-galioto": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/3042425-1000-1000/VF4qT-qqCUAAAAAAAAGB4A.jpg",
+  "produto": "Vinho Tinto Galiotto Suave Garrafa 1l",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/vinho-tinto-galiotto-suave-garrafa-1l-384208/p"
+ },
+ "taca-reservado": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/181669-1000-1000/65678b511ef3739680761954.jpg",
+  "produto": "Vinho Chileno Concha Y Toro Reservado Malbec 750ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/vinho-chileno-concha-y-toro-reservado-malbec-750ml-1484185/p",
+  "etiqueta": true
+ },
+ "guaravita": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/3042188-1000-1000/VF4qT-qqCUAAAAAAAAF79w.jpg",
+  "produto": "Guaraná Natural Guaravita Copo 290",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/guarana-natural-guaravita-copo-290-244317/p"
+ },
+ "coca-cola-350ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/210692-1000-1000/66db573762edc14e790f854f.jpg",
+  "produto": "Refrigerante Coca-Cola Lata 350ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/refrigerante-coca-cola-lata-350ml-1099466/p",
+  "etiqueta": true
+ },
+ "coca-cola-zero-350ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/210687-1000-1000/66db56801298149b5076a025.jpg",
+  "produto": "Refrigerante Coca-Cola sem Açúcar Lata 350ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/refrigerante-coca-cola-sem-acucar-lata-350ml-1105223/p",
+  "etiqueta": true
+ },
+ "guarana-antarctica-350ml": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/3202073-1000-1000/VF4qT-qqCUAAAAAAAAScAg.jpg",
+  "produto": "Refrigerante Guaraná Antarctica Lata 350ml",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/refrigerante-guarana-antarctica-lata-350-ml-109517/p"
+ },
+ "guarana-antarctica-zero-350ml": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/4703735-1000-1000/VF4qT-qqCUAAAAAAAAc3vQ.jpg",
+  "produto": "Refrigerante Guaraná Antarctica Zero Lata 350ml",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/refrigerante-guarana-antarctica-zero-lata-350-ml-109509/p"
+ },
+ "fanta-laranja-350ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/187440-1000-1000/6567905f1ef3739680762f65.jpg",
+  "produto": "Refrigerante Fanta Laranja Lata 350ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/refrigerante-fanta-laranja-lata-350ml-1098674001/p",
+  "etiqueta": true
+ },
+ "fanta-uva-350ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/187422-1000-1000/6567905f1ef3739680762f66.jpg",
+  "produto": "Refrigerante Fanta Uva Lata 350ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/refrigerante-fanta-uva-lata-350ml-1098674002/p",
+  "etiqueta": true
+ },
+ "sprite-zero-350ml": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/4480569-1000-1000/VF4qT-qqCUAAAAAAAAoZYA.jpg",
+  "produto": "Refrigerante Sprite Limão Sem Açúcar Lata 350ml",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/refrigerante-sprite-limao-sem-acucar-lata-350-ml-115240/p"
+ },
+ "schweppes-tonica-350ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/179242-1000-1000/656789221ef3739680760fb1.jpg",
+  "produto": "Água Tônica Schweppes Lata 350ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/agua-tonica-schweppes-lata-350ml-1101015/p",
+  "etiqueta": true
+ },
+ "schweppes-citrus-350ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/240465-1000-1000/6a4bc6107d5da4c6d8d0c062.jpg",
+  "produto": "Refrigerante Schweppes Citrus Drink Lata 350ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/refrigerante-schweppes-citrus-drink-lata-350ml-1744504/p",
+  "etiqueta": true
+ },
+ "del-valle-goiaba-290ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/239547-1000-1000/6a4bc5569b41d67373162aef.jpg",
+  "produto": "Néctar Del Valle Goiaba Lata 290ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/nectar-del-valle-goiaba-lata-290ml-1710725001/p",
+  "etiqueta": true
+ },
+ "del-valle-manga-290ml": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/4206561-1000-1000/VF4qT-qqCUAAAAAAAAkBbw.jpg",
+  "produto": "Néctar Del Valle Manga Lata 290ml",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/nectar-del-valle-manga-lata-290ml-879959/p"
+ },
+ "del-valle-pessego-290ml": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/4353323-1000-1000/VF4qT-qqCUAAAAAAAAn-vQ.jpg",
+  "produto": "Néctar Del Valle Pêssego Lata 290ml",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/nectar-del-valle-pessego-lata-290ml-879975/p"
+ },
+ "del-valle-uva-290ml": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/4206563-1000-1000/VF4qT-qqCUAAAAAAAAkBcQ.jpg",
+  "produto": "Néctar Del Valle Uva Lata 290ml",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/nectar-del-valle-uva-lata-290ml-879991/p"
+ },
+ "h2oh": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/3098014-1000-1000/VF4qT-qqCUAAAAAAAATO0A.jpg",
+  "produto": "Refrigerante H2Oh! Limão Garrafa 500ml",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/refrigerante-h2oh--limao-garrafa-500ml-420506/p"
+ },
+ "guaraviton": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/3039908-1000-1000/VF4qT-qqCUAAAAAAAAF79g.jpg",
+  "produto": "Guaraná Natural Guaraviton Pronto Açaí 500ml",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/guarana-natural-guaraviton-pronto-acai-500-ml-224154/p"
+ },
+ "ice-tea": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/182246-1000-1000/65678bcc1ef3739680761b79.jpg",
+  "produto": "Chá Leão Ice Tea Limão Pet 300ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/cha-leao-ice-tea-limao-pet-300ml-1630686/p",
+  "etiqueta": true
+ },
+ "coca-cola-2l": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/4763479-1000-1000/VF4qT-qqCUAAAAAAAAoaqA.jpg",
+  "produto": "Refrigerante Coca Cola Original Pet 2L",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/refrigerante-coca-cola-original-pet-2-104108/p"
+ },
+ "coca-cola-zero-2l": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/179384-1000-1000/6567894b1ef373968076108d.jpg",
+  "produto": "Refrigerante Coca-Cola sem Açúcar Pet 2l",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/refrigerante-coca-cola-sem-acucar-pet-2l-1105220/p",
+  "etiqueta": true
+ },
+ "coca-cola-ks-vidro-290ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/226215-1000-1000/69ca93d24e09b34e5dbea5ea.jpg",
+  "produto": "Refrigerante Coca-Cola King Size 10 290ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/refrigerante-coca-cola-king-size-10-290ml-1506586/p"
+ },
+ "coca-cola-zero-ks-vidro-290ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/226214-1000-1000/69ca93d24e09b34e5dbea5eb.jpg",
+  "produto": "Refrigerante Coca-Cola Zero Açúcar Garrafa King Size 10 290ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/refrigerante-coca-cola-zero-acucar-garrafa-king-size-10-290ml-1506587/p"
+ },
+ "original-473ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/229373-1000-1000/69ce843db869cfa5a2a0ab2c.jpg",
+  "produto": "Cerveja Original Pilsen Lata 473ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/cerveja-original-pilsen-lata-473ml-1820812/p",
+  "etiqueta": true
+ },
+ "heineken-473ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/184530-1000-1000/65678db91ef373968076245e.jpg",
+  "produto": "Cerveja Heineken Puro Malte Lata 473ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/cerveja-heineken-puro-malte-lata-473ml-1757796/p",
+  "etiqueta": true
+ },
+ "corona-long-neck": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/205940-1000-1000/6596ed956b7a256da6742a9f.jpg",
+  "produto": "Cerveja Corona Pilsen Extra Long Neck 330ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/cerveja-corona-pilsen-extra-long-neck-330ml-1753537/p"
+ },
+ "brahma-550ml": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/3202036-1000-1000/VF4qT-qqCUAAAAAAAAOu2A.jpg",
+  "produto": "Cerveja Brahma Chopp Pilsen Lata 473ml",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/cerveja-brahma-chopp-pilsen-lata-473ml-424625/p"
+ },
+ "antarctica-473ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/176132-1000-1000/650888bc1a51d1d5711c0457.jpg",
+  "produto": "Cerveja Antarctica Pilsen Lata 473ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/cerveja-antarctica-pilsen-lata-473ml-1101957/p",
+  "etiqueta": true
+ },
+ "amstel-473ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/175479-1000-1000/6500ac899cc50a6d1faa8f26.jpg",
+  "produto": "Cerveja Amstel Lager Puro Malte Lata 473ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/cerveja-amstel-lager-puro-malte-lata-473ml-1661615/p",
+  "etiqueta": true
+ },
+ "itaipava-550ml": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/221202-1000-1000/691397bb583e6597a885ff90.jpg",
+  "produto": "Cerveja Itaipava Pilsen Lata 550ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/cerveja-itaipava-pilsen-lata-550ml-1634312/p"
+ },
+ "malzbier-long-neck": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/3040387-1000-1000/VF4qT-qqCUAAAAAAAAHI2g.jpg",
+  "produto": "Cerveja Brasileira Brahma Malzbier Long Neck 355ml",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/cerveja-brasileira-brahma-malzbier-long-neck-355-ml-140627/p"
+ },
+ "heineken-zero-long-neck": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/184442-1000-1000/65678da41ef37396807623fa.jpg",
+  "produto": "Cerveja Heineken Puro Malte Lager Zero Álcool Long Neck 330ml",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/cerveja-heineken-puro-malte-lager-zero-alcool-long-neck-330ml-1755136/p",
+  "etiqueta": true
+ },
+ "kit-kat": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/212566-1000-1000/67bcdf2c3717f52fad52e5ba.jpg",
+  "produto": "Wafer Kitkat Nestlé 4 Fingers ao Leite 41,5g",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/wafer-kitkat-nestle-4-fingers-ao-leite-41-5g-1703576002/p",
+  "etiqueta": true
+ },
+ "nutella-b-ready": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/4513620-1000-1000/VF4qT-qqCUAAAAAAAAoeyw.png",
+  "produto": "Nutella B-Ready Wafer Recheado 1 Unidade 22g",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/waffer-recheado-nutella-b-ready-1-unidade-22g-984400/p"
+ },
+ "kinder-joy": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/4090091-1000-1000/VF4qT-qqCUAAAAAAAAiuNg.png",
+  "produto": "Chocolate Kinder Joy 1 unidade 20g",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/chocolate-kinder-joy-1-unidade-20g-475440/p",
+  "apagar": [
+   [
+    680,
+    0,
+    320,
+    400
+   ]
+  ]
+ },
+ "mini-bala-fini": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/218227-1000-1000/68ee4f8894c06cefed01edd6.jpg",
+  "produto": "Balas de Gelatina Fini Tubes Morango 35g",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/balas-de-gelatina-fini-tubes-morango-35g-1881552001/p"
+ },
+ "mentos": {
+  "url": "https://prezunic.vteximg.com.br/arquivos/ids/187955-1000-1000/656790db1ef37396807631d4.jpg",
+  "produto": "Drops Mentos Sticks Mint 37,5g",
+  "loja": "prezunic.com.br",
+  "pagina": "https://www.prezunic.com.br/drops-mentos-sticks-mint-37-5g-1115563010/p"
+ },
+ "kinder-bueno": {
+  "url": "https://zonasul.vteximg.com.br/arquivos/ids/4513538-1000-1000/VF4qT-qqCUAAAAAAAAofXw.png",
+  "produto": "Kinder Bueno Chocolate ao Leite 2 unidades 43g",
+  "loja": "zonasul.com.br",
+  "pagina": "https://www.zonasul.com.br/kinder-bueno-chocolate-ao-leite-2-unidades-43g-173029/p"
+ }
+}

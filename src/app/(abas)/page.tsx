@@ -1,55 +1,53 @@
-import { CabecalhoCompacto } from '@/components/inicio/CabecalhoCompacto';
+import { BarraFixa } from '@/components/inicio/BarraFixa';
 import { Capa } from '@/components/inicio/Capa';
 import { CartaoLoja } from '@/components/inicio/CartaoLoja';
 import { Cupom } from '@/components/inicio/Cupom';
-import { AbasCategorias } from '@/components/inicio/AbasCategorias';
+import { AtalhosCardapio } from '@/components/inicio/AtalhosCardapio';
 import { AvisoFechado } from '@/components/inicio/AvisoFechado';
-import { Banners } from '@/components/inicio/Banners';
 import { PecaDeNovo } from '@/components/inicio/PecaDeNovo';
 import { Favoritos } from '@/components/inicio/Favoritos';
-import { Destaques, destaques } from '@/components/inicio/Destaques';
-import { SecaoItens } from '@/components/inicio/SecaoItens';
+import { Destaques } from '@/components/inicio/Destaques';
+import { SecaoCardapio } from '@/components/inicio/SecaoCardapio';
 import { RodapeLoja } from '@/components/inicio/RodapeLoja';
 import { DetalhesLoja } from '@/components/inicio/DetalhesLoja';
-import { EscolhaEntrega } from '@/components/inicio/EscolhaEntrega';
 import { ConviteInstalar } from '@/components/layout/ConviteInstalar';
-import { MENU } from '@/data/cardapio';
+import { destaquesDoCardapio, montarCardapio } from '@/lib/cardapio';
 
 /**
- * Início: a página da loja do iFood. Server Component; o cardápio inteiro
- * chega como HTML. Cliente só onde reage: entrega, abas, banners, [+],
- * peça de novo, favoritos, folhas.
+ * Início: a página da loja. Capa com as fotos se alternando, cartão da loja,
+ * os atalhos das 7 seções com foto e o cardápio por seção (pratos em linhas,
+ * bebidas e doces em prateleiras). Como receber fica para o fim, na sacola.
+ * Server Component; cliente só onde reage (capa, barra fixa, [+], prateleiras).
  */
 export default function Inicio() {
-  const temDestaques = destaques().length > 0;
-  const secoes = [
-    ...(temDestaques ? [{ id: 'destaques', nome: 'Destaques' }] : []),
-    ...MENU.map((c) => ({ id: c.id, nome: c.nome })),
-  ];
+  const secoes = montarCardapio();
+  const temDestaques = destaquesDoCardapio().length > 0;
+  const abas = [...(temDestaques ? [{ id: 'destaques', nome: 'Destaques' }] : []), ...secoes.map((s) => ({ id: s.id, nome: s.nome }))];
 
   return (
     <>
-      <CabecalhoCompacto />
+      <BarraFixa secoes={abas} />
       <Capa />
       <CartaoLoja />
       <Cupom />
-      <AbasCategorias secoes={secoes} />
+      <AtalhosCardapio secoes={secoes} />
 
       <main className="mx-auto max-w-2xl">
         <AvisoFechado />
-        <Banners />
         <PecaDeNovo />
         <ConviteInstalar />
         <Favoritos />
         <Destaques />
-        {MENU.map((categoria) => (
-          <SecaoItens key={categoria.id} categoria={categoria} />
+        {secoes.map((secao) => (
+          <div key={secao.id}>
+            <div className="separador mt-7" />
+            <SecaoCardapio secao={secao} />
+          </div>
         ))}
         <RodapeLoja />
       </main>
 
       <DetalhesLoja />
-      <EscolhaEntrega perguntar />
     </>
   );
 }

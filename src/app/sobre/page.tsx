@@ -6,8 +6,12 @@ import { StatusLoja } from '@/components/layout/StatusLoja';
 import { Horarios } from '@/components/perfil/Horarios';
 import { MapaLoja } from '@/components/perfil/MapaLoja';
 import { LOJA } from '@/data/loja';
+import { CREDITOS_FOTOS } from '@/data/fotos-bebidas';
+import { MENU } from '@/data/cardapio';
 
 export const metadata: Metadata = { title: 'Sobre a loja' };
+
+const nomeDoItem = (id: string) => MENU.flatMap((c) => c.items).find((i) => i.id === id)?.nome ?? id;
 
 const saudacao = encodeURIComponent(`Olá! Vim pelo app da ${LOJA.nome}.`);
 
@@ -77,6 +81,23 @@ export default function SobrePage() {
         </section>
 
         <p className="px-4 pb-4 pt-2 text-center text-[13px] italic text-texto-2">{LOJA.fraseCasa}</p>
+
+        {CREDITOS_FOTOS.length > 0 && (
+          <details className="mx-4 mt-2 rounded-cartao bg-fundo-2 px-4 py-3 text-[12px] leading-relaxed text-texto-2">
+            <summary className="min-h-11 cursor-pointer content-center text-[13px] font-semibold text-texto">Créditos das fotos</summary>
+            <p className="mt-1">
+              Pratos: fotos da própria {LOJA.nome} (@{LOJA.instagram}). Produtos de marca: fotos de catálogo dos fabricantes. Fotos
+              ilustrativas de bebidas sem marca definida, com licença Creative Commons:
+            </p>
+            <ul className="mt-2 space-y-1">
+              {CREDITOS_FOTOS.map((c) => (
+                <li key={c.itemId}>
+                  {nomeDoItem(c.itemId)}: <a href={c.pagina} target="_blank" rel="noopener noreferrer" className="underline">{c.titulo}</a>, de {c.autor} ({c.licenca})
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
       </main>
     </>
   );

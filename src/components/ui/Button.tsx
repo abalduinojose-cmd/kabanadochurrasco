@@ -21,11 +21,11 @@ const VARIANTES: Record<Variante, string> = {
 
 const TAMANHOS: Record<Tamanho, string> = {
   md: 'h-11 px-4 text-[14px]',
-  lg: 'h-12 px-5 text-[15px]',
+  lg: 'h-[52px] px-5 text-[15px]',
 };
 
 export function classesDoBotao(variante: Variante = 'primario', tamanho: Tamanho = 'lg', className = ''): string {
-  return `inline-flex items-center justify-center gap-2 rounded-botao font-semibold transition-colors disabled:cursor-not-allowed ${VARIANTES[variante]} ${TAMANHOS[tamanho]} ${className}`;
+  return `inline-flex items-center justify-center gap-2 rounded-botao font-bold transition-colors disabled:cursor-not-allowed ${VARIANTES[variante]} ${TAMANHOS[tamanho]} ${className}`;
 }
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {

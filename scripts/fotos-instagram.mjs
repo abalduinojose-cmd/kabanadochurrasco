@@ -2,7 +2,7 @@
 //
 // Baixa a versão grande de cada post escolhido (instagram.com/p/<código>/media/?size=l,
 // 1080px, sem login), recorta o que tem texto ou logo por cima, converte em WebP e
-// grava public/fotos/<id>.webp + src/data/fotos.ts, a capa e os banners.
+// grava public/fotos/<id>.webp + src/data/fotos.ts e as duas fotos da capa.
 //
 // Como usar (na pasta do projeto):  node scripts/fotos-instagram.mjs
 // Os originais ficam em scripts/.cache-fotos/ (pode apagar; baixa de novo).
@@ -21,6 +21,7 @@ import { fileURLToPath } from 'node:url';
 const projeto = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(path.join(projeto, 'package.json'));
 const sharp = require('sharp');
+sharp.cache(false); // no Windows o cache segura o arquivo aberto e impede regravar a capa
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36';
 const cache = path.join(projeto, 'scripts', '.cache-fotos');
 mkdirSync(cache, { recursive: true });
@@ -30,7 +31,6 @@ mkdirSync(cache, { recursive: true });
 const MAPA = {
   'porcao-de-peixes': ['Dd9f5KVx3Yl', [0, 0, 1080, 1080], 'legenda'],
   'batata-frita-com-carne-seca-com-catupiry': ['DbMFcnERDo4', [60, 400, 933, 700], 'legenda'],
-  'caipirinha-kabana': ['DRAClsykXWc', [345, 300, 430, 800], 'legenda'],
   'drinks-kabana': ['DWJvrThEVUr', [0, 250, 1080, 1080], 'legenda'],
   'burguer-de-coracao': ['DMtEwI3xwvd', null, 'legenda'],
   'morango-com-chocolate': ['DMi7eBMR9uS', [0, 80, 1080, 1080], 'legenda'],
@@ -50,11 +50,14 @@ const MAPA = {
   'picanha-da-casa-com-fritas-serve-4-pessoas': ['DIT1USRR2c9', [0, 330, 1080, 730], 'legenda'],
   'aneis-de-cebola': ['CupZPCtLzFl', [520, 60, 560, 560], 'legenda'],
 };
-const CAPA = ['DTgXzHBkSds', [0, 260, 1080, 760]];
-const BANNERS = {
-  tabuas: ['DMgCg5pRQg_', [0, 40, 1080, 720]],
-  burgers: ['DTvxSGHkdgv', [0, 250, 1080, 720]],
-  espetos: ['DdKSc21Nmcx', [0, 300, 1080, 720]],
+// Fotos dos atalhos do Início que não são de um item (data/secoes.ts).
+const EXTRAS = {
+  'atalho-acompanhamentos': ['DYU1VPnRBik', [540, 660, 460, 460]], // farofa e vinagrete da tábua
+};
+// Capa do Início: duas fotos que se alternam (LOJA.capas). Recorte largo, sem texto.
+const CAPAS = {
+  'capa-1': ['DYU1VPnRBik', [0, 400, 1080, 760]],
+  'capa-2': ['DTvxSGHkdgv', [0, 300, 1080, 760]],
 };
 
 const menu = readFileSync(path.join(projeto, 'src/data/menu.ts'), 'utf-8');
@@ -83,10 +86,8 @@ async function gera(code, recorte, destino, largura, qualidade = 80) {
 
 const pastaFotos = path.join(projeto, 'public', 'fotos');
 mkdirSync(pastaFotos, { recursive: true });
+// Só os arquivos da raiz de public/fotos (as subpastas produtos/ e bebidas/ são do fotos-bebidas.mjs).
 for (const f of readdirSync(pastaFotos)) if (f.endsWith('.webp')) unlinkSync(path.join(pastaFotos, f));
-const pastaBanners = path.join(projeto, 'public', 'banners');
-mkdirSync(pastaBanners, { recursive: true });
-for (const f of readdirSync(pastaBanners)) if (f.endsWith('.webp')) unlinkSync(path.join(pastaBanners, f));
 
 const linhas = [];
 let total = 0;
@@ -96,11 +97,17 @@ for (const [id, [code, recorte, como]] of Object.entries(MAPA)) {
   linhas.push(`  '${id}': '/fotos/${id}.webp', // instagram.com/p/${code} (${como === 'legenda' ? 'legenda nomeia o prato' : 'bate com a descrição do item'})`);
   console.log(id.padEnd(44), code, `${saida.width}x${saida.height}`, kb + ' kB');
 }
-const capa = await gera(CAPA[0], CAPA[1], path.join(pastaFotos, 'capa.webp'), 1600, 78);
-console.log('capa'.padEnd(44), CAPA[0], `${capa.saida.width}x${capa.saida.height}`, capa.kb + ' kB');
-for (const [nome, [code, recorte]] of Object.entries(BANNERS)) {
-  const b = await gera(code, recorte, path.join(pastaBanners, `${nome}.webp`), 1200, 78);
-  console.log(('banner ' + nome).padEnd(44), code, `${b.saida.width}x${b.saida.height}`, b.kb + ' kB');
+for (const [nome, [code, recorte]] of Object.entries(CAPAS)) {
+  const capa = await gera(code, recorte, path.join(pastaFotos, `${nome}.webp`), 1600, 80);
+  // As fotos da casa são noturnas: a capa ganha luz e um pouco de cor para não pesar sob os véus.
+  const arqCapa = path.join(pastaFotos, `${nome}.webp`);
+  const clara = await sharp(arqCapa).modulate({ brightness: 1.22, saturation: 1.08 }).linear(1.04, -3).webp({ quality: 80 }).toBuffer();
+  writeFileSync(arqCapa, clara);
+  console.log(nome.padEnd(44), code, `${capa.saida.width}x${capa.saida.height}`, capa.kb + ' kB');
+}
+for (const [nome, [code, recorte]] of Object.entries(EXTRAS)) {
+  const e = await gera(code, recorte, path.join(pastaFotos, `${nome}.webp`), 600, 80);
+  console.log(nome.padEnd(44), code, `${e.saida.width}x${e.saida.height}`, e.kb + ' kB');
 }
 console.log('total das fotos de itens:', total, 'kB em', linhas.length, 'itens');
 
@@ -108,17 +115,19 @@ writeFileSync(path.join(projeto, 'src', 'data', 'fotos.ts'), `/**
  * Mapa de fotos: id do item (menu.ts) -> arquivo em /public/fotos.
  *
  * GERADO por scripts/fotos-instagram.mjs (edite o MAPA de lá e rode de novo).
- * Fotos do Instagram da loja (@kabana_do_churrasco), escolhidas pela legenda
- * do post (ou, quando a legenda não nomeia o prato, pela descrição do item no
- * instadelivery), conferidas uma a uma e recortadas para tirar textos e logos
- * sobrepostos; WebP de até 1200px, quadradas ou perto de 4:3. Para uma foto
- * nova fora do Instagram: salve em public/fotos/ e escreva a linha aqui com o
- * id EXATO do item. Item com foto vira destaque e ganha miniatura na lista.
+ * Pratos: fotos do Instagram da loja (@kabana_do_churrasco), escolhidas pela
+ * legenda do post (ou, quando a legenda não nomeia o prato, pela descrição do
+ * item no instadelivery), recortadas para tirar textos e logos sobrepostos.
+ * Bebidas e bomboniere: data/fotos-bebidas.ts (scripts/fotos-bebidas.mjs).
+ * Para uma foto nova fora desses scripts: salve em public/fotos/ e escreva a
+ * linha aqui com o id EXATO do item.
  *
  * Ficaram SEM foto (nenhum post limpo, só arte com texto por cima): Kafta,
  * Frango e Medalhão bovino (espetinhos), BIG K, Kabana Burguer I e III,
- * Toscano, Cheddar e Bacon, Kombo Kids, Trio Kabana e o resto do cardápio.
+ * Toscano, Cheddar e Bacon, Kombo Kids, Trio Kabana e parte das porções.
  */
+
+import { FOTOS_BEBIDAS } from './fotos-bebidas';
 
 export const FOTOS: Readonly<Record<string, string>> = {
 ${linhas.join('\n')}
@@ -126,7 +135,18 @@ ${linhas.join('\n')}
 
 /** Foto do item, se houver. O \`imageUrl\` do próprio menu.ts tem preferência. */
 export function fotoDoItem(id: string, imageUrl?: string): string | undefined {
-  return imageUrl ?? FOTOS[id];
+  return imageUrl ?? FOTOS[id] ?? FOTOS_BEBIDAS[id];
+}
+
+/**
+ * Foto de produto em fundo branco (lata, garrafa, embalagem): mostrada inteira
+ * (contain) e mesclada ao cinza do cartão, nunca cortada.
+ */
+export function ehFotoDeProduto(src: string | undefined): boolean {
+  return src?.startsWith('/fotos/produtos/') ?? false;
 }
 `);
 console.log('fotos.ts com', linhas.length, 'itens');
+
+// Miniaturas de 384px para os espaços pequenos (ver src/lib/image-loader.ts).
+execFileSync('node', [path.join(projeto, 'scripts', 'miniaturas.mjs')], { stdio: 'inherit' });

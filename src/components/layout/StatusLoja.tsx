@@ -7,7 +7,7 @@ import { useAgora } from '@/lib/use-agora';
  * "Aberto até 23:30" ou "Fechado, abre hoje às 18:00", como o iFood escreve
  * no cartão da loja. Nasce neutro e só o cliente resolve o relógio (useAgora).
  */
-export function StatusLoja({ className = '' }: { className?: string }) {
+export function StatusLoja({ className = '', pilula = false }: { className?: string; pilula?: boolean }) {
   const agora = useAgora();
 
   if (agora === null) {
@@ -19,7 +19,9 @@ export function StatusLoja({ className = '' }: { className?: string }) {
   return (
     <span
       role="status"
-      className={`inline-flex items-center gap-1.5 text-[13px] font-semibold ${aberta ? 'text-verde' : 'text-texto-2'} ${className}`}
+      className={`inline-flex items-center gap-1.5 text-[13px] font-semibold ${aberta ? 'text-verde' : 'text-texto-2'} ${
+        pilula ? `h-7 rounded-full px-2.5 ${aberta ? 'bg-verde-suave' : 'bg-fundo-2'}` : ''
+      } ${className}`}
     >
       <i
         aria-hidden

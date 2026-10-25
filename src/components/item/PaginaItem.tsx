@@ -8,6 +8,7 @@ import { ChevronLeft } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Stepper } from '@/components/ui/Stepper';
+import { ehFotoDeProduto } from '@/data/fotos';
 import { mostrarNaProximaTela } from '@/components/ui/Toast';
 import { BotaoCompartilhar } from '@/components/inicio/BotaoCompartilhar';
 import { PecaTambem } from '@/components/inicio/PecaTambem';
@@ -16,7 +17,7 @@ import { GrupoDeOpcoes } from './GrupoDeOpcoes';
 import { useCarrinho } from '@/store/cart';
 import { fotoDoItem } from '@/data/fotos';
 import { MAX_OBSERVACAO } from '@/data/grupos-extra';
-import { SUGESTOES_OBSERVACAO } from '@/data/observacoes';
+import { sugestoesDeObservacao } from '@/data/observacoes';
 import { formatBRL, toCents } from '@/lib/money';
 import { adicionarComToque } from '@/lib/motion/toque';
 import {
@@ -161,8 +162,15 @@ function Conteudo({ achado }: { achado: ItemComCategoria }) {
   return (
     <div className="min-h-dvh bg-fundo pb-36">
       {foto ? (
-        <div className="relative aspect-[4/3] max-h-[380px] w-full overflow-hidden bg-foto">
-          <Image src={foto} alt={item.nome} fill priority sizes="(max-width: 672px) 100vw, 672px" className="object-cover" />
+        <div className={`relative aspect-[4/3] max-h-[380px] w-full overflow-hidden ${ehFotoDeProduto(foto) ? 'bg-vitrine' : 'bg-foto'}`}>
+          <Image
+            src={foto}
+            alt={item.nome}
+            fill
+            priority
+            sizes="(max-width: 672px) 100vw, 672px"
+            className={ehFotoDeProduto(foto) ? 'object-contain px-[18%] pb-[8%] pt-[16%] mix-blend-multiply' : 'object-cover'}
+          />
           <div className="absolute inset-x-3 top-[max(12px,env(safe-area-inset-top))] flex items-center justify-between">
             <BotaoVoltar flutuante />
             <div className="flex gap-2">
@@ -206,8 +214,8 @@ function Conteudo({ achado }: { achado: ItemComCategoria }) {
           <label htmlFor={obsId} className="text-[15px] font-bold text-texto">
             Algum comentário?
           </label>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {SUGESTOES_OBSERVACAO.map((s) => {
+          <div className="mt-2 flex flex-wrap gap-2 empty:hidden">
+            {sugestoesDeObservacao(categoria.id).map((s) => {
               const ativa = sugestaoAtiva(s);
               return (
                 <button

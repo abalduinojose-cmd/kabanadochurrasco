@@ -12,6 +12,7 @@
   --color-borda: #ececec;
   --color-divisor: #f1f1f1;
   --color-foto: #efefef; /* fundo de miniatura sem foto */
+  --color-vitrine: #f3f2f0; /* fundo da foto de produto (lata, garrafa): o branco dela some aqui */
 
   /* ---------- texto ---------- */
   --color-texto: #1f1f1f;
@@ -46,10 +47,10 @@
   --text-titulo: 1.375rem;
   --text-titulo--line-height: 1.15;
 
-  /* ---------- forma (o iFood é 8/12, não pílula) ---------- */
-  --radius-botao: 8px;
-  --radius-campo: 8px;
-  --radius-cartao: 12px;
+  /* ---------- forma (12/14/20: mais macio que o iFood de 2024) ---------- */
+  --radius-botao: 12px;
+  --radius-campo: 12px;
+  --radius-cartao: 14px;
   --radius-folha: 20px;
   --radius-pilula: 999px;
 

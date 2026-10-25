@@ -148,6 +148,34 @@
   }
 }
 
+/* Barrinha da capa: enche no tempo da foto (quanto falta para a próxima). */
+@keyframes capa-progresso {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Push lento da câmera na foto da capa (pleno e contido, ver Capa.tsx). */
+@keyframes capa-push {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+@keyframes capa-push-leve {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.025);
+  }
+}
+
 /* Ponto de "aberta": status ao vivo, o único laço. */
 @keyframes pulsa {
   0%,

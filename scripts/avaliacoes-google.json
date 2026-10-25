@@ -1,0 +1,128 @@
+{
+ "coletadoEm": "2026-10-25",
+ "fonte": "Google Maps (Apify compass/Google-Maps-Reviews-Scraper, placeId ChIJMyQwyxRRmAARhvMZVdASx74)",
+ "placeId": "ChIJMyQwyxRRmAARhvMZVdASx74",
+ "nota": 4.8,
+ "total": 49,
+ "distribuicao": {
+  "5": 43,
+  "4": 4,
+  "3": 1,
+  "2": 0,
+  "1": 1
+ },
+ "coordenadas": {
+  "lat": -22.2505495,
+  "lng": -43.0724003
+ },
+ "selecao": [
+  {
+   "id": "daniela-ferreira",
+   "nome": "Daniela Ferreira",
+   "estrelas": 5,
+   "quando": "2025-07-24",
+   "guiaLocal": true,
+   "texto": "O espaço fica um pouquinho longe do centro de Itaipava mas vale super a pena ir conhecer. Tem um espaço que você pode aproveitar com os amigos e além de ter uma excelente comida, o hambúrguer é simplesmente sensacional, uma verdadeira delícia. O atendimento foi maravilhoso tanto no dia que só fomos buscar o lanche, como no dia que comemos no lugar, fale super a pena conhecer.",
+   "foto": "https://lh3.googleusercontent.com/a-/ALV-UjVSqrBMwp-bZ6EfLr6L0oaYDocfDhP-G86nQI2tuijt3urRwGkR=s1920-c-rp-mo-ba12-br100",
+   "fotosDaAvaliacao": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLc7YtzoCWIM8_jVZvRlVHSH9gYhzl8T7SaOKDMYoH4mV3T41UU31vRBc2JNWlKDrYpdr9PiVwme2uml5Jmu9NoU6Y2LdBsHqtRB12gCWbbwpgZXVpNdt5eTgAYPOrcSmVadzUCuy6LPc8k=k-no",
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLd0JEt53J1-L1wh1nNbNpNS9GCo5NLsNtqj2Ez-FKZSQ1oCxKjHyNcEQWR1gkr4B8WePr7AlIUVWadD6uXjNLYNM8dRgLWb-0aupOY7MxHQbbIxZH2o5aLdl7Cur5F6Q3xumoz9S2BU62BD=k-no",
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeLyKzEeGzXNHXBYTJuGiK6uarSxkFAjsqYkkrsGaDVNbplS1Yz8LqDfKW9YtZimnJfYOyurQyhV9LiHNHFDAQBC36kKRW9AC0Tp1H4bddCeeBFvOfNDO3e5asVOcX1GtCtDxyyKmMJUrM=k-no",
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLf8GaSiJdnRrezMAgMCJdDa6VB_QU76xVgTPtJtn_oU2TAlRaYVY_qrzDUfXOxf5e03nMDmqihqFhkSlC4lNi7YIHEmBVLGJ9_Q4UD1LRmKxZTUbMQdjM3-92N6Rbi883PNQmM8RTmLT58=k-no"
+   ]
+  },
+  {
+   "id": "carlos-felipe",
+   "nome": "Carlos Felipe Oliveira Zimbrao",
+   "estrelas": 5,
+   "quando": "2026-08-01",
+   "guiaLocal": false,
+   "texto": "Excelente opção para um bom churrasco e hambúrgueres na brasa. Atendimento excelente, com destaque para o garçom Paulo. Boa diversidade de espetos, tábuas e petiscos e bebida sempre gelada.",
+   "foto": "https://lh3.googleusercontent.com/a-/ALV-UjXoNl6Lnrp_XxB20eonR1jbPYImIdbDIWXA__L5fyRfymmDzHg=s1920-c-rp-mo-br100",
+   "fotosDaAvaliacao": []
+  },
+  {
+   "id": "luciana-maria",
+   "nome": "Luciana Maria de Souza",
+   "estrelas": 5,
+   "quando": "2026-10-10",
+   "guiaLocal": false,
+   "texto": "Tudo bom demais! E os atendentes são nota 10!",
+   "foto": "https://lh3.googleusercontent.com/a/ACg8ocIhEdnwCDDOeiqIssJUn6forxMuu7eA5CPlhPtuzDqkxmMiRA=s1920-c-rp-mo-br100",
+   "fotosDaAvaliacao": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcbrN3l66M8F15TPa3wuG-isXzSOv-smat1VxspMx6S3Xs9kaxJX96AmIxfqwtWpqstxiIJb52kwENdfdhRT6s1-KuMBNdUkwdeGueY6jQlCRLXKRMse4ssLBuHxQnamuIC2jn7MxvXN_o=k-no"
+   ]
+  },
+  {
+   "id": "rosane-marcelo",
+   "nome": "Rosane Marcelo",
+   "estrelas": 5,
+   "quando": "2023-10-14",
+   "guiaLocal": true,
+   "texto": "Fui pela primeira vez e Amei o lugar, simples porém aconchegante, comida MARAVILHOSA! Comi 3 tipos diferentes de espetinhos e todos estavam deliciosos, muito bem temperados, no ponto e muito macios. O Hambúrguer não ficou atrás, Perfeito, o ponto, a carne os temperos. Vou virar cliente com certeza.",
+   "foto": "https://lh3.googleusercontent.com/a-/ALV-UjUHwdYsHdk01rbnBnqEu2TJo6i3lc3Fya5UwGUfYU-5dbsQOO5L=s1920-c-rp-mo-ba12-br100",
+   "fotosDaAvaliacao": []
+  },
+  {
+   "id": "peter-claussen",
+   "nome": "Peter Claussen",
+   "estrelas": 5,
+   "quando": "2025-03-05",
+   "guiaLocal": true,
+   "texto": "Excelente opção de petiscos e carnes em Posse. Comida saborosa, porções generosas e preço bem honesto. Parabéns!",
+   "foto": "https://lh3.googleusercontent.com/a-/ALV-UjW-V2GDAnEr__2f_ClArERRj0bME4GSOw2Vo4_SMYmQTXtg66NzlQ=s1920-c-rp-mo-ba12-br100",
+   "fotosDaAvaliacao": []
+  },
+  {
+   "id": "rafaela",
+   "nome": "Rafaela",
+   "estrelas": 5,
+   "quando": "2026-06-17",
+   "guiaLocal": false,
+   "texto": "Adorei, foi uma grata surpresa pois estava de passagem pela cidade. Comida gostosa, fresquinha e quantidade justa.",
+   "foto": "https://lh3.googleusercontent.com/a-/ALV-UjWbhDesAg9PL8i7bRonvvLoglSp81GSDtbC08sNV9KRDFBHqFAP=s1920-c-rp-mo-br100",
+   "fotosDaAvaliacao": []
+  },
+  {
+   "id": "junior-naval",
+   "nome": "Junior Naval",
+   "estrelas": 5,
+   "quando": "2025-05-26",
+   "guiaLocal": true,
+   "texto": "Atendimento top, espetinho e hambúrgueres excelentes. Parabéns pelo bom atendimento e pelo local que até tem espaço kids.",
+   "foto": "https://lh3.googleusercontent.com/a-/ALV-UjVKp_0X_dKJ_o3rSA0IWBqmeEgQrwVmbcGm90muQgWMLd-8RWXL=s1920-c-rp-mo-ba12-br100",
+   "fotosDaAvaliacao": []
+  },
+  {
+   "id": "patricia-nogueira",
+   "nome": "Patricia de Sousa Nogueira",
+   "estrelas": 5,
+   "quando": "2025-01-26",
+   "guiaLocal": true,
+   "texto": "Ambiente famíliar, descontraído",
+   "foto": "https://lh3.googleusercontent.com/a-/ALV-UjXn_pSMrEgS0ZeA6GVBPHUXmu_WRCzlv427a2kgFUiSYumx65Rl=s1920-c-rp-mo-ba12-br100",
+   "fotosDaAvaliacao": []
+  },
+  {
+   "id": "leonardo-meirelles",
+   "nome": "Leonardo Meirelles",
+   "estrelas": 5,
+   "quando": "2026-08-13",
+   "guiaLocal": true,
+   "texto": "Lanche perfeito e atendimento nota 10",
+   "foto": "https://lh3.googleusercontent.com/a-/ALV-UjUZoygfq6zSg2ecKEPGZY0UkLXkdCVxxaVvVQBnJoqlrfpsgpCZ=s1920-c-rp-mo-ba12-br100",
+   "fotosDaAvaliacao": []
+  },
+  {
+   "id": "livia-magrani",
+   "nome": "Livia Magrani",
+   "estrelas": 5,
+   "quando": "2025-04-03",
+   "guiaLocal": false,
+   "texto": "Eu literalmente sou apaixonada nesses lanches impecáveis!",
+   "foto": "https://lh3.googleusercontent.com/a/ACg8ocL6Cq7I6p6ETMs34l-xsbP-Ksgunmd65ugFzyTa_69WEFD7WA=s1920-c-rp-mo-br100",
+   "fotosDaAvaliacao": []
+  }
+ ],
+ "observacao": "Textos como estão no Google (só espaços após vírgula e ponto corrigidos e um emoji retirado). Nomes como aparecem no perfil, com maiúsculas normalizadas."
+}
