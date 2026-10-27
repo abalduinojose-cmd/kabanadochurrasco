@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useSyncExternalStore } from 'react';
 import Link from 'next/link';
-import { Clock3, Search, SearchX, X } from 'lucide-react';
+import { ArrowLeft, Clock3, Search, SearchX, X } from 'lucide-react';
 import { LinhaProduto } from '@/components/inicio/LinhaProduto';
 import { useBusca, selBuscando } from '@/store/busca';
 import { MENU } from '@/data/cardapio';
@@ -13,6 +13,8 @@ import { indexar, buscar, type ItemIndexado } from '@/lib/busca';
  * resultados agrupados por categoria quando se digita. O termo fica na store
  * para sobreviver à troca de aba; as recentes ficam no localStorage, lidas
  * como store externa (sem setState em efeito, sem divergência de hidratação).
+ * Com `aoFechar`, é a camada aberta pela lupa da página inicial: ganha a seta
+ * de voltar e fecha ao levar a uma categoria.
  */
 
 const CHAVE_RECENTES = 'kabana:buscas-recentes';
@@ -58,7 +60,7 @@ function gravarRecentes(nova: readonly string[]) {
 const CHIP =
   'inline-flex h-9 items-center rounded-pilula border border-borda bg-cartao px-3.5 text-[13px] font-semibold text-texto-2 hover:bg-fundo-2';
 
-export function PaginaBusca() {
+export function PaginaBusca({ aoFechar }: { aoFechar?: () => void } = {}) {
   const termo = useBusca((s) => s.termo);
   const definir = useBusca((s) => s.definir);
   const limpar = useBusca((s) => s.limpar);
@@ -90,7 +92,7 @@ export function PaginaBusca() {
   }
 
   return (
-    <div className="mx-auto min-h-dvh max-w-2xl">
+    <div className={`mx-auto max-w-2xl ${aoFechar ? 'pb-10' : 'min-h-dvh'}`}>
       <form
         role="search"
         onSubmit={(e) => {
@@ -104,8 +106,14 @@ export function PaginaBusca() {
         <label htmlFor="busca" className="sr-only">
           Buscar no cardápio
         </label>
-        <div className="relative">
-          <Search className="pointer-events-none absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-texto-2" aria-hidden />
+        <div className="flex items-center gap-1.5">
+          {aoFechar && (
+            <button type="button" onClick={aoFechar} aria-label="Fechar a busca" className="-ml-2 grid size-11 shrink-0 place-items-center rounded-full text-texto hover:bg-fundo-2">
+              <ArrowLeft className="size-[22px]" aria-hidden />
+            </button>
+          )}
+          <div className="relative flex-1">
+            <Search className="pointer-events-none absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-texto-2" aria-hidden />
           <input
             ref={campo}
             id="busca"
@@ -131,6 +139,7 @@ export function PaginaBusca() {
               <X className="size-5" aria-hidden />
             </button>
           )}
+          </div>
         </div>
       </form>
 
@@ -163,7 +172,7 @@ export function PaginaBusca() {
             <h2 className="text-[15px] font-bold text-texto">Categorias</h2>
             <div className="mt-3 flex flex-wrap gap-2">
               {MENU.map((c) => (
-                <Link key={c.id} href={`/#${c.id}`} className={CHIP}>
+                <Link key={c.id} href={`/#${c.id}`} onClick={aoFechar} className={CHIP}>
                   {c.nome}
                 </Link>
               ))}
@@ -179,7 +188,7 @@ export function PaginaBusca() {
           <p className="mx-auto mt-2 max-w-[30ch] text-[14px] text-texto-2">Tente outra palavra ou vá direto a uma categoria.</p>
           <div className="mt-5 flex flex-wrap justify-center gap-2">
             {MENU.map((c) => (
-              <Link key={c.id} href={`/#${c.id}`} className={CHIP}>
+              <Link key={c.id} href={`/#${c.id}`} onClick={aoFechar} className={CHIP}>
                 {c.nome}
               </Link>
             ))}

@@ -40,7 +40,7 @@ export const SECOES: readonly Secao[] = [
     nome: 'Lanches',
     formato: 'lista',
     chamada: 'Burgers no pão brioche',
-    foto: '/fotos/costela-burguer.webp',
+    foto: '/fotos/kabana-burguer-ii.webp',
     destaques: true,
     categorias: [
       { categoriaId: 'especiais', titulo: 'Burgers especiais', cartoes: true },
@@ -66,7 +66,7 @@ export const SECOES: readonly Secao[] = [
     nome: 'Tábuas e porções',
     formato: 'lista',
     chamada: 'Para dividir com a galera',
-    foto: '/fotos/contra-file-com-fritas-serve-3-pessoas.webp',
+    foto: '/fotos/picanha-da-casa-com-fritas-serve-4-pessoas.webp',
     destaques: true,
     categorias: [
       { categoriaId: 'tabuas-kabana', titulo: 'Tábuas para dividir' },
@@ -91,7 +91,7 @@ export const SECOES: readonly Secao[] = [
     nome: 'Sobremesas',
     formato: 'lista',
     chamada: 'Banana na brasa, brownie e mais',
-    foto: '/fotos/morango-com-chocolate.webp',
+    foto: '/fotos/gelado-de-brownie.webp',
     destaques: true,
     categorias: [{ categoriaId: 'sobremesas' }],
   },

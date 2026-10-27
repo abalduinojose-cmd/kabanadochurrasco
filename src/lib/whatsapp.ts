@@ -38,7 +38,7 @@ function linhaDeItem(rotulo: string, preco: string): string {
   return `${rotulo} ${'.'.repeat(Math.max(pontos, 2))} ${preco}`;
 }
 
-function blocoDoItem(linha: LinhaCarrinho): readonly string[] {
+export function blocoDoItem(linha: LinhaCarrinho): readonly string[] {
   const linhas = [
     linhaDeItem(`${linha.quantidade}x ${linha.nome}`, formatBRLPlain(precoLinha(linha))),
   ];
@@ -76,6 +76,9 @@ export function buildOrderMessage(pedido: Pedido): string {
   l.push(`Subtotal: ${formatBRLPlain(pedido.subtotalCents)}`);
   if (pedido.modo === 'entrega' && pedido.entrega) {
     l.push(`Entrega — ${pedido.entrega.bairro}: ${formatBRLPlain(pedido.taxaEntregaCents)}`);
+  }
+  if (pedido.cupom && pedido.descontoCents) {
+    l.push(`Cupom ${pedido.cupom}: -${formatBRLPlain(pedido.descontoCents)}`);
   }
   l.push(`*TOTAL: ${formatBRLPlain(pedido.totalCents)}*`);
 

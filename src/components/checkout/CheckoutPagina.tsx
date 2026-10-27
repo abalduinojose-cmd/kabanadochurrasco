@@ -12,12 +12,15 @@ import { Field } from '@/components/ui/Field';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { Escolha } from './Escolha';
 import { OrderReview } from './OrderReview';
+import { CampoCupom } from '@/components/sacola/CampoCupom';
 
 import { useCarrinho, selSubtotal, selTemAlcool, selUnidadesDeEspeto } from '@/store/cart';
 import { useCliente } from '@/store/cliente';
 import { useEntrega } from '@/store/entrega';
 import { usePedidos } from '@/store/pedidos';
 import { useAgora } from '@/lib/use-agora';
+import { useCupomAplicado } from '@/lib/use-cupom';
+import { useCupom } from '@/store/cupom';
 import { isOpenNow, nextOpening } from '@/lib/store-hours';
 import { formatBRL, parseBRL, toCents } from '@/lib/money';
 import { maskTelefone } from '@/lib/mask';
@@ -114,7 +117,9 @@ export function CheckoutPagina() {
   const erros = form.formState.errors;
   const metodo = LOJA.pagamentos.find((p) => p.id === v.pagamento);
   const taxa = taxaEntrega(v.modo, v.bairro || null) ?? 0;
-  const total = subtotal + taxa;
+  const ctxCupom = { subtotalCents: subtotal, taxaCents: taxa, modo: v.modo };
+  const cupom = useCupomAplicado(ctxCupom);
+  const total = subtotal + taxa - cupom.descontoCents;
   const trocoParaCents = metodo?.pedeTroco ? parseBRL(v.trocoPara ?? '') : null;
   const troco = trocoPara(total, trocoParaCents);
 
@@ -164,6 +169,7 @@ export function CheckoutPagina() {
       entrega,
       subtotalCents: subtotal,
       taxaEntregaCents: taxa,
+      ...(cupom.descontoCents > 0 && cupom.codigo ? { cupom: cupom.codigo, descontoCents: cupom.descontoCents } : {}),
       totalCents: total,
       pagamento: {
         id: dados.pagamento,
@@ -178,8 +184,9 @@ export function CheckoutPagina() {
     registrar(pedido);
     salvarCliente({ nome: pedido.cliente.nome, telefone: pedido.cliente.telefone, endereco: entrega ?? cliente?.endereco ?? null });
     window.open(buildWhatsAppUrl(pedido), '_blank', 'noopener');
-    // A sacola só esvazia depois de o pedido existir no histórico.
+    // A sacola (e o cupom usado) só esvaziam depois de o pedido existir no histórico.
     limpar();
+    if (pedido.cupom) useCupom.getState().remover();
     router.push(`/pedido?id=${encodeURIComponent(pedido.id)}`);
   }
 
@@ -408,7 +415,17 @@ export function CheckoutPagina() {
       <div className="separador" />
 
       {/* 4. Resumo */}
-      <OrderReview linhas={linhas} subtotal={subtotal} taxa={taxa} total={total} modo={v.modo} bairro={v.bairro || null} />
+      <CampoCupom avaliacao={cupom.avaliacao} ctx={ctxCupom} className="mt-4" />
+      <OrderReview
+        linhas={linhas}
+        subtotal={subtotal}
+        taxa={taxa}
+        total={total}
+        cupom={cupom.codigo ?? undefined}
+        desconto={cupom.descontoCents}
+        modo={v.modo}
+        bairro={v.bairro || null}
+      />
 
       {/* Barra fixa: avisos, total e o único botão. */}
       <footer className="pb-seguro fixed inset-x-0 bottom-0 z-30 border-t border-divisor bg-cartao px-4 pt-3">

@@ -30,6 +30,12 @@ export default function manifest(): MetadataRoute.Manifest {
         icons: [{ src: comBase('/icones/icone-192.png'), sizes: '192x192' }],
       },
       {
+        name: 'Atendimento na mesa (tablet)',
+        short_name: 'Mesa',
+        url: comBase('/atendimento'),
+        icons: [{ src: comBase('/icones/icone-192.png'), sizes: '192x192' }],
+      },
+      {
         name: 'Horários e endereço',
         short_name: 'Loja',
         url: comBase('/perfil'),

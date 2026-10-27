@@ -176,6 +176,43 @@
   }
 }
 
+/* Atendimento na mesa: janelas entram subindo e assentando; com "reduzir
+   movimento", só a opacidade (a janela ainda precisa aparecer). */
+@keyframes janela-entra {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes veu-entra {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes check-traca {
+  from {
+    stroke-dashoffset: 48;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@utility anima-janela {
+  animation: janela-entra 260ms var(--ease-expo) both;
+}
+@utility anima-veu {
+  animation: veu-entra 200ms linear both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .anima-janela {
+    animation-name: veu-entra;
+  }
+}
+
 /* Ponto de "aberta": status ao vivo, o único laço. */
 @keyframes pulsa {
   0%,

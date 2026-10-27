@@ -6,7 +6,8 @@ import { BadgeCheck, Clock, CreditCard, ExternalLink, Instagram, MapPin, Message
 import { Folha } from '@/components/ui/Folha';
 import { BrandMark } from '@/components/layout/BrandMark';
 import { StatusLoja } from '@/components/layout/StatusLoja';
-import { Horarios } from '@/components/perfil/Horarios';
+import { HorarioSemana } from '@/components/perfil/HorarioSemana';
+import { FormasPagamento } from '@/components/perfil/FormasPagamento';
 import { MapaLoja } from '@/components/perfil/MapaLoja';
 import { AVALIACOES, GOOGLE, type Avaliacao } from '@/data/avaliacoes';
 import { LOJA } from '@/data/loja';
@@ -224,7 +225,7 @@ export function DetalhesLoja() {
         <Titulo icone={<Clock className="size-4" aria-hidden />}>
           <span id="titulo-horarios">Horário de funcionamento</span>
         </Titulo>
-        <Horarios />
+        <HorarioSemana />
       </section>
 
       <section aria-labelledby="titulo-onde" className="mt-7">
@@ -238,13 +239,7 @@ export function DetalhesLoja() {
         <Titulo icone={<CreditCard className="size-4" aria-hidden />}>
           <span id="titulo-pagamento">Formas de pagamento</span>
         </Titulo>
-        <ul className="mt-3 flex flex-wrap gap-2">
-          {LOJA.pagamentos.map((p) => (
-            <li key={p.id} className="rounded-full bg-fundo-2 px-3 py-1.5 text-[12.5px] font-semibold text-texto">
-              {p.label}
-            </li>
-          ))}
-        </ul>
+        <FormasPagamento />
       </section>
     </Folha>
   );

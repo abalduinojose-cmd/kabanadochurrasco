@@ -40,6 +40,9 @@ export type Pedido = {
   readonly entrega?: DadosEntrega;
   readonly subtotalCents: Cents;
   readonly taxaEntregaCents: Cents;
+  /** Cupom aplicado e quanto ele tirou (pedidos antigos não têm). */
+  readonly cupom?: string;
+  readonly descontoCents?: Cents;
   readonly totalCents: Cents;
   readonly pagamento: DadosPagamento;
   readonly temAlcool: boolean;

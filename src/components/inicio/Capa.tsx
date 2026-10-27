@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Search } from 'lucide-react';
 import { BrandMark } from '@/components/layout/BrandMark';
 import { BotaoCompartilhar } from './BotaoCompartilhar';
+import { BotaoBusca } from '@/components/busca/BotaoBusca';
 import { LOJA } from '@/data/loja';
 import { querMovimento } from '@/lib/motion/reduce';
 
@@ -113,9 +112,7 @@ export function Capa() {
       )}
 
       <div className="pt-seguro absolute inset-x-3 top-0 flex justify-end gap-2 pt-3">
-        <Link href="/busca" aria-label="Buscar no cardápio" className="grid size-10 place-items-center rounded-full bg-white/92 text-texto shadow-sm backdrop-blur">
-          <Search className="size-5" aria-hidden />
-        </Link>
+        <BotaoBusca className="grid size-10 place-items-center rounded-full bg-white/92 text-texto shadow-sm backdrop-blur" />
         <BotaoCompartilhar />
       </div>
     </div>

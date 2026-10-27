@@ -144,6 +144,15 @@ test('retirada troca o bloco de entrega e some com a taxa', () => {
   assert.ok(msg.includes('*TOTAL: R$ 118,80*'));
 });
 
+test('cupom aplicado sai entre a entrega e o total, e sem cupom nao ha linha', () => {
+  const msg = buildOrderMessage({ ...PEDIDO, cupom: 'KABANA10', descontoCents: 1188, totalCents: PEDIDO.totalCents - 1188 });
+  const linhas = msg.split('\n');
+  const iCupom = linhas.findIndex((l) => l.startsWith('Cupom KABANA10: -R$'));
+  assert.ok(iCupom > linhas.findIndex((l) => l.startsWith('Entrega —')));
+  assert.ok(linhas[iCupom + 1]?.startsWith('*TOTAL:'));
+  assert.ok(!buildOrderMessage(PEDIDO).includes('Cupom'));
+});
+
 test('sem alcool no carrinho a linha do +18 nao aparece', () => {
   const msg = buildOrderMessage({ ...PEDIDO, temAlcool: false, maiorDeIdade: false });
   assert.ok(!msg.includes('maior de 18 anos'));

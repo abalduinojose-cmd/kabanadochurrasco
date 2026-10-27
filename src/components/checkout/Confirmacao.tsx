@@ -160,6 +160,8 @@ function Pouso({ pedido, aoPedirDeNovo }: { pedido: Pedido; aoPedirDeNovo: () =>
           subtotal={pedido.subtotalCents}
           taxa={pedido.taxaEntregaCents}
           total={pedido.totalCents}
+          cupom={pedido.cupom}
+          desconto={pedido.descontoCents}
           modo={pedido.modo}
           bairro={pedido.entrega?.bairro ?? null}
         />

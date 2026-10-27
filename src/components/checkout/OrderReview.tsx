@@ -13,12 +13,15 @@ type Props = {
   subtotal: Cents;
   taxa: Cents;
   total: Cents;
+  /** Cupom aplicado e o valor que ele tirou. */
+  cupom?: string;
+  desconto?: Cents;
   modo: ModoEntrega;
   bairro: string | null;
   titulo?: string;
 };
 
-export function OrderReview({ linhas, subtotal, taxa, total, modo, bairro, titulo = 'Resumo do pedido' }: Props) {
+export function OrderReview({ linhas, subtotal, taxa, total, cupom, desconto = 0, modo, bairro, titulo = 'Resumo do pedido' }: Props) {
   return (
     <section className="px-4 pt-4" aria-label={titulo}>
       <h2 className="text-[15px] font-bold text-texto">{titulo}</h2>
@@ -55,6 +58,12 @@ export function OrderReview({ linhas, subtotal, taxa, total, modo, bairro, titul
           <dt className="text-texto-2">{modo === 'retirada' ? 'Retirada no local' : `Taxa de entrega${bairro ? `, ${bairro}` : ''}`}</dt>
           <dd className={taxa === 0 ? 'font-semibold text-verde' : 'tabular-nums text-texto'}>{taxa === 0 ? 'Grátis' : formatBRL(taxa)}</dd>
         </div>
+        {desconto > 0 && (
+          <div className="flex justify-between">
+            <dt className="text-texto-2">Cupom {cupom}</dt>
+            <dd className="font-semibold tabular-nums text-verde">−{formatBRL(desconto)}</dd>
+          </div>
+        )}
         <div className="flex items-baseline justify-between border-t border-divisor pt-2 text-[15px] font-extrabold">
           <dt>Total</dt>
           <dd className="tabular-nums">{formatBRL(total)}</dd>

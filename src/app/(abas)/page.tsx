@@ -3,6 +3,7 @@ import { Capa } from '@/components/inicio/Capa';
 import { CartaoLoja } from '@/components/inicio/CartaoLoja';
 import { Cupom } from '@/components/inicio/Cupom';
 import { AtalhosCardapio } from '@/components/inicio/AtalhosCardapio';
+import { BuscaNoCardapio } from '@/components/busca/BuscaNoCardapio';
 import { AvisoFechado } from '@/components/inicio/AvisoFechado';
 import { PecaDeNovo } from '@/components/inicio/PecaDeNovo';
 import { Favoritos } from '@/components/inicio/Favoritos';
@@ -27,6 +28,7 @@ export default function Inicio() {
   return (
     <>
       <BarraFixa secoes={abas} />
+      <BuscaNoCardapio />
       <Capa />
       <CartaoLoja />
       <Cupom />

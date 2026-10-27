@@ -1,9 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
-import { Search } from 'lucide-react';
 import { BotaoCompartilhar } from './BotaoCompartilhar';
+import { BotaoBusca } from '@/components/busca/BotaoBusca';
 import { LOJA } from '@/data/loja';
 import { querMovimento } from '@/lib/motion/reduce';
 
@@ -71,9 +70,7 @@ export function BarraFixa({ secoes }: Props) {
     >
       <div className="mx-auto flex h-14 max-w-2xl items-center gap-1 pl-4 pr-2">
         <p className="min-w-0 flex-1 truncate text-[17px] font-extrabold tracking-[-0.01em] text-texto">{LOJA.nome}</p>
-        <Link href="/busca" aria-label="Buscar no cardápio" className="grid size-11 place-items-center rounded-full text-texto hover:bg-fundo-2">
-          <Search className="size-5" aria-hidden />
-        </Link>
+        <BotaoBusca className="grid size-11 place-items-center rounded-full text-texto hover:bg-fundo-2" />
         <BotaoCompartilhar className="grid size-11 place-items-center rounded-full text-texto hover:bg-fundo-2" />
       </div>
       <nav aria-label="Seções do cardápio">
