@@ -7,13 +7,13 @@ import { ArrowRight, Clock, Smartphone, UserRound } from 'lucide-react';
 import { LogoKabana } from '@/components/layout/LogoKabana';
 import { useComanda, resumoDaComanda, type ComandaGuardada } from '@/store/comanda';
 import { useAgora } from '@/lib/use-agora';
-import { formatBRL } from '@/lib/money';
 import { LOJA } from '@/data/loja';
 
 /**
  * A tela das mesas, onde o /atendimento sempre começa. As 10 mesas da casa:
- * livre, ou EM ATENDIMENTO (laranja) com o atendente, há quanto tempo está
- * aberta, a conta pelo tablet e o pedido em montagem. O garçom toca na mesa:
+ * LIVRE (selo verde), ou EM ATENDIMENTO (laranja) com o atendente, há quanto
+ * tempo está aberta e o andamento (pedidos enviados ou itens em montagem),
+ * sem valores: preço não aparece nesta tela (a conta fica no menu do garçom). O garçom toca na mesa:
  * livre pede o nome dele e começa o atendimento (entrega o tablet ao cliente
  * nas boas-vindas); em atendimento retoma de onde parou, direto no cardápio.
  * São as mesas deste tablet (sem servidor, um tablet não vê o outro).
@@ -31,6 +31,13 @@ function haQuanto(desde: number, agora: Date | null): string | null {
 }
 
 const textoDosEnviados = (n: number) => (n === 0 ? 'Nenhum pedido enviado' : n === 1 ? '1 pedido enviado' : `${n} pedidos enviados`);
+
+/** O que a mesa tem, sem valores (preço não aparece na tela das mesas): pedidos enviados ou itens em montagem. */
+function andamento(enviados: number, noPedido: number): string {
+  if (enviados > 0) return enviados === 1 ? '1 pedido enviado' : `${enviados} pedidos enviados`;
+  if (noPedido > 0) return noPedido === 1 ? '1 item no pedido' : `${noPedido} itens no pedido`;
+  return 'Sem pedidos';
+}
 
 type Props = {
   /** `nova`: mesa que começou agora (vai às boas-vindas); retomada vai direto ao cardápio. */
@@ -109,7 +116,7 @@ export function InicioMesa({ aoAbrir }: Props) {
                     <span className="text-[30px] font-extrabold leading-none tabular-nums">{n}</span>
                     <span
                       className={`rounded-full px-2 py-0.5 text-[10.5px] font-extrabold uppercase tracking-[0.06em] ${
-                        c ? 'bg-fogo text-carvao' : 'bg-white/10 text-white/55'
+                        c ? 'bg-fogo text-carvao' : 'bg-[#1e8e4b] text-white'
                       }`}
                     >
                       {c ? 'Aberta' : 'Livre'}
@@ -123,7 +130,7 @@ export function InicioMesa({ aoAbrir }: Props) {
                         {quando ?? ' '}
                       </span>
                       <span className="mt-1 block text-[13px] font-extrabold tabular-nums text-[#ff9a52]">
-                        {r.contaCents > 0 ? formatBRL(r.contaCents) : r.itensNoPedido > 0 ? `${r.itensNoPedido} no pedido` : 'Sem pedidos'}
+                        {andamento(r.pedidosEnviados, r.itensNoPedido)}
                       </span>
                     </span>
                   ) : (
@@ -155,8 +162,7 @@ export function InicioMesa({ aoAbrir }: Props) {
           {mesa && escolhida && (
             <p className="mt-5 rounded-[16px] bg-white/[0.06] px-4 py-3 text-[14px] text-white/75">
               Mesa {mesa} aberta {haQuanto(escolhida.abertaEm, agora) ?? ''}
-              {escolhida.garcom ? ` por ${escolhida.garcom}` : ''}. {textoDosEnviados(resumoDaComanda(escolhida).pedidosEnviados)}, conta de{' '}
-              <b className="font-extrabold text-white">{formatBRL(resumoDaComanda(escolhida).contaCents)}</b>.
+              {escolhida.garcom ? ` por ${escolhida.garcom}` : ''}. {textoDosEnviados(resumoDaComanda(escolhida).pedidosEnviados)}.
             </p>
           )}
 
