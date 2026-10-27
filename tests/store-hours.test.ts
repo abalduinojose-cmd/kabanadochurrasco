@@ -138,7 +138,7 @@ test('contagem ate abrir: minutos ate a proxima abertura, no fuso de Sao Paulo',
   const proxima = nextOpening(agora, H);
   assert.ok(proxima);
   assert.equal(minutosAteAbrir(agora, proxima), 132);
-  assert.equal(textoDaContagem(132), 'Faltam 2 h 12 min');
+  assert.equal(textoDaContagem(132), '2 h 12 min');
   // Segunda fechada: domingo 23:40 → terça 18:00 passa de um dia, sem contagem
   const domingo = utc('2026-10-26T02:40:00Z');
   const terca = nextOpening(domingo, H);
@@ -148,9 +148,9 @@ test('contagem ate abrir: minutos ate a proxima abertura, no fuso de Sao Paulo',
 });
 
 test('texto da contagem: minutos, horas cheias e horas com minutos', () => {
-  assert.equal(textoDaContagem(12), 'Faltam 12 min');
-  assert.equal(textoDaContagem(60), 'Faltam 1 h');
-  assert.equal(textoDaContagem(65), 'Faltam 1 h 05 min');
+  assert.equal(textoDaContagem(12), '12 min');
+  assert.equal(textoDaContagem(60), '1 h');
+  assert.equal(textoDaContagem(65), '1 h 05 min');
   assert.equal(textoDaContagem(0), null);
   assert.equal(textoDaContagem(1440), null);
 });

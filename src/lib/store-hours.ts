@@ -164,13 +164,13 @@ export function minutosAteAbrir(agora: Date, proxima: ProximaAbertura): number {
   return proxima.emDias * 1440 + minutosDe(proxima.hora) - minutos;
 }
 
-/** "Faltam 12 min", "Faltam 2 h 05 min"; null a partir de um dia (aí só o dia e a hora dizem). */
+/** "12 min", "2 h 05 min" (quanto falta); null a partir de um dia (aí só o dia e a hora dizem). */
 export function textoDaContagem(minutos: number): string | null {
   if (minutos <= 0 || minutos >= 1440) return null;
-  if (minutos < 60) return `Faltam ${minutos} min`;
+  if (minutos < 60) return `${minutos} min`;
   const h = Math.floor(minutos / 60);
   const m = minutos % 60;
-  return m === 0 ? `Faltam ${h} h` : `Faltam ${h} h ${String(m).padStart(2, '0')} min`;
+  return m === 0 ? `${h} h` : `${h} h ${String(m).padStart(2, '0')} min`;
 }
 
 /** Texto curto para o cabeçalho: "Aberto até 23:30" ou "Fechado ─ abre hoje às 18:00". */
