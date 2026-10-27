@@ -77,8 +77,8 @@ export function bloqueiosDoPedido(e: EstadoDoPedido, regras: RegrasDoPedido = RE
     bloqueios.push({
       id: 'loja-fechada',
       mensagem: e.proximaAbertura
-        ? `A loja está fechada agora. Abre ${e.proximaAbertura.label}.`
-        : 'A loja está fechada agora.',
+        ? `O pedido pelo app só pode ser feito no horário de funcionamento. Abrimos ${e.proximaAbertura.label}.`
+        : 'O pedido pelo app só pode ser feito no horário de funcionamento.',
     });
   }
 

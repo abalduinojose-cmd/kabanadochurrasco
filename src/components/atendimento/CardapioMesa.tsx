@@ -4,6 +4,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { BellRing, Check, ChevronRight, Search, ShoppingBag, X } from 'lucide-react';
 import { LogoKabana } from '@/components/layout/LogoKabana';
+import { AvisoHorario } from '@/components/layout/AvisoHorario';
+import { useLojaAberta } from '@/lib/use-loja-aberta';
 import { CartaoMesa } from './CartaoMesa';
 import { ItemMesa } from './ItemMesa';
 import { PedidoMesa } from './PedidoMesa';
@@ -46,6 +48,8 @@ export function CardapioMesa({ aoNovoCliente }: { aoNovoCliente: () => void }) {
   const [enviado, setEnviado] = useState<{ pedido: PedidoEnviado; url: string | null } | null>(null);
   const [menuGarcom, setMenuGarcom] = useState(false);
   const [aviso, setAviso] = useState<string | null>(null);
+  // Fora do horário o cardápio abre e o pedido monta, mas não sai para a cozinha.
+  const lojaAberta = useLojaAberta();
 
   const mesa = useComanda((s) => s.mesa) ?? '';
   const garcom = useComanda((s) => s.garcom);
@@ -234,7 +238,7 @@ export function CardapioMesa({ aoNovoCliente }: { aoNovoCliente: () => void }) {
   const propsPedido = {
     nome,
     aoMudarNome: setNome,
-    aoEnviar: () => setEtapa('conferir'),
+    aoEnviar: () => (lojaAberta === false ? setAviso('O pedido só pode ser enviado no horário de funcionamento.') : setEtapa('conferir')),
     aoChamarGarcom: chamarGarcom,
     aoPedirConta: pedirConta,
   };
@@ -303,6 +307,7 @@ export function CardapioMesa({ aoNovoCliente }: { aoNovoCliente: () => void }) {
             <div className="min-w-0 flex-1">{campoBusca}</div>
             <div className="lg:hidden">{seloMesa(false)}</div>
           </div>
+          <AvisoHorario className="mx-4 mb-3 sm:mx-6" />
           <nav aria-label="Seções do cardápio" className="lg:hidden">
             <ul className="sem-barra flex gap-2 overflow-x-auto px-4 pb-3 sm:px-6">
               {secoes.map((s) => {

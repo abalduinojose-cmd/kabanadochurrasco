@@ -72,7 +72,11 @@ function perguntas() {
     },
     {
       q: 'Posso montar o pedido com a loja fechada?',
-      a: ['Pode. A sacola fica guardada neste aparelho por 12 horas; quando a loja abrir, é só finalizar e enviar.'],
+      a: ['Pode olhar o cardápio e montar a sacola, que fica guardada neste aparelho por 12 horas. O pedido pelo app só pode ser finalizado no horário de funcionamento: quando a loja abrir, é só finalizar e enviar.'],
+    },
+    {
+      q: 'Preciso fazer cadastro?',
+      a: ['Não é obrigatório, mas agiliza: com o cadastro (em Perfil) o checkout já vem com seu nome, WhatsApp e endereço. Ele fica só neste aparelho, sem senha.'],
     },
     {
       q: 'Como instalo o app no celular?',

@@ -137,6 +137,18 @@
   }
 }
 
+/* A faixa "Ver sacola" nasce dentro da doca: a doca cresce para cima. */
+@keyframes doca-sacola {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: calc(var(--altura-sacola) + 6px);
+    opacity: 1;
+  }
+}
+
 @keyframes toast-entra {
   from {
     opacity: 0;

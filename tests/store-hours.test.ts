@@ -7,6 +7,8 @@ import {
   partesEmSaoPaulo,
   minutosDe,
   horaDe,
+  minutosAteAbrir,
+  textoDaContagem,
   type Horarios,
 } from '../src/lib/store-hours.ts';
 
@@ -128,4 +130,27 @@ test('o resultado nao depende do fuso da maquina', () => {
   process.env.TZ = 'Asia/Tokyo';
   assert.equal(isOpenNow(instante, H), antes);
   process.env.TZ = 'America/Sao_Paulo';
+});
+
+test('contagem ate abrir: minutos ate a proxima abertura, no fuso de Sao Paulo', () => {
+  // Terça 27/10/2026, 15:48 em São Paulo (18:48Z); abre às 18:00 → 132 min
+  const agora = utc('2026-10-27T18:48:00Z');
+  const proxima = nextOpening(agora, H);
+  assert.ok(proxima);
+  assert.equal(minutosAteAbrir(agora, proxima), 132);
+  assert.equal(textoDaContagem(132), 'Faltam 2 h 12 min');
+  // Segunda fechada: domingo 23:40 → terça 18:00 passa de um dia, sem contagem
+  const domingo = utc('2026-10-26T02:40:00Z');
+  const terca = nextOpening(domingo, H);
+  assert.ok(terca);
+  assert.equal(minutosAteAbrir(domingo, terca), 20 + 1440 + 1080);
+  assert.equal(textoDaContagem(minutosAteAbrir(domingo, terca)), null);
+});
+
+test('texto da contagem: minutos, horas cheias e horas com minutos', () => {
+  assert.equal(textoDaContagem(12), 'Faltam 12 min');
+  assert.equal(textoDaContagem(60), 'Faltam 1 h');
+  assert.equal(textoDaContagem(65), 'Faltam 1 h 05 min');
+  assert.equal(textoDaContagem(0), null);
+  assert.equal(textoDaContagem(1440), null);
 });

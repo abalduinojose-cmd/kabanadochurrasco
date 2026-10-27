@@ -8,6 +8,7 @@ import { DesfazerToast } from '@/components/cart/DesfazerToast';
 import { PecaTambem } from '@/components/inicio/PecaTambem';
 import { useEscolhaEntrega } from '@/components/inicio/EscolhaEntrega';
 import { LogoKabana } from '@/components/layout/LogoKabana';
+import { AvisoHorario } from '@/components/layout/AvisoHorario';
 import { StatusLoja } from '@/components/layout/StatusLoja';
 import { LinkBotao } from '@/components/ui/Button';
 import { Skeleton } from '@/components/ui/Skeleton';
@@ -23,7 +24,8 @@ import { LOJA } from '@/data/loja';
  * pílula, "Adicionar mais itens", "Como você quer receber?" (a escolha mora
  * aqui, no fim do pedido), "Complete seu pedido", o resumo de valores e um
  * botão único embaixo com o total. Os avisos vêm de `lib/regras-pedido.ts`,
- * a mesma função que bloqueia no checkout.
+ * a mesma função que bloqueia no checkout. Fora do horário, o aviso no alto:
+ * a sacola monta normal, só o checkout não envia.
  */
 export function Sacola() {
   const hidratado = useCarrinho((s) => s.hidratado);
@@ -85,6 +87,8 @@ export function Sacola() {
           Cardápio
         </Link>
       </div>
+
+      <AvisoHorario className="mx-4 mt-4" />
 
       <section aria-label="Itens da sacola" className="mx-4 mt-4 rounded-[20px] bg-cartao px-4 shadow-[0_0_0_1px_var(--color-borda),0_8px_24px_-16px_rgba(0,0,0,0.25)]">
         <div className="flex items-center justify-between pt-4">

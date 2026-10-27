@@ -10,7 +10,8 @@ import { useComanda } from '@/store/comanda';
 /**
  * O atendimento na mesa (endereço /atendimento): o garçom abre a mesa, o
  * cliente recebe o tablet na tela de boas-vindas, escolhe no cardápio e envia
- * o pedido. Tudo fica no aparelho até o garçom encerrar a mesa.
+ * o pedido. Tudo fica no aparelho até o garçom encerrar a mesa. Fora do
+ * horário da loja o cardápio abre, mas o envio fica bloqueado (CardapioMesa).
  */
 export function Atendimento() {
   const hidratado = useComanda((s) => s.hidratado);

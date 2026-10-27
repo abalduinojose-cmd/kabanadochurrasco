@@ -56,7 +56,7 @@
   --radius-pilula: 999px;
 
   /* ---------- barras ---------- */
-  --altura-abas: 62px; /* a barra de abas flutuante (sem a margem de baixo) */
+  --altura-abas: 66px; /* a doca das abas (54 + 12 de borda interna), sem a margem de baixo */
   --altura-sacola: 56px;
 
   /* ---------- movimento ---------- */

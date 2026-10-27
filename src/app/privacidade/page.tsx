@@ -10,11 +10,11 @@ export default function PrivacidadePage() {
     {
       titulo: 'O que fica salvo',
       texto:
-        'A sacola, os últimos pedidos, os favoritos, a forma de receber e os dados que você digitou no checkout (nome, WhatsApp e endereço). Tudo fica guardado só neste aparelho, no armazenamento do navegador, para o próximo pedido vir preenchido.',
+        'A sacola, os últimos pedidos, os favoritos, a forma de receber e o seu cadastro (nome, WhatsApp e endereço, feito no cadastro ou digitado no checkout). Tudo fica guardado só neste aparelho, no armazenamento do navegador, para o próximo pedido vir preenchido.',
     },
     {
       titulo: 'O que não fica',
-      texto: 'O app não tem cadastro, senha nem servidor próprio. Não guarda cartão e não processa pagamento: o pagamento é combinado direto com a loja.',
+      texto: 'O cadastro não tem senha e não vai para nenhum servidor: o app não tem servidor próprio. Não guarda cartão e não processa pagamento: o pagamento é combinado direto com a loja.',
     },
     {
       titulo: 'Para onde os dados vão',
@@ -22,7 +22,7 @@ export default function PrivacidadePage() {
     },
     {
       titulo: 'Como apagar',
-      texto: 'Em Perfil, Meus dados, use "Apagar meus dados deste aparelho". Limpar os dados do site no navegador também apaga tudo.',
+      texto: 'Em Perfil, Meu cadastro, use "Apagar meus dados deste aparelho". Limpar os dados do site no navegador também apaga tudo.',
     },
   ];
 

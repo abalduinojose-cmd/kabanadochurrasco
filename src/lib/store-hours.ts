@@ -158,6 +158,21 @@ export function nextOpening(agora: Date, horarios: Horarios = LOJA.horarios): Pr
   return null;
 }
 
+/** Quantos minutos faltam de `agora` até a abertura `proxima` (fuso de São Paulo). */
+export function minutosAteAbrir(agora: Date, proxima: ProximaAbertura): number {
+  const { minutos } = partesEmSaoPaulo(agora);
+  return proxima.emDias * 1440 + minutosDe(proxima.hora) - minutos;
+}
+
+/** "Faltam 12 min", "Faltam 2 h 05 min"; null a partir de um dia (aí só o dia e a hora dizem). */
+export function textoDaContagem(minutos: number): string | null {
+  if (minutos <= 0 || minutos >= 1440) return null;
+  if (minutos < 60) return `Faltam ${minutos} min`;
+  const h = Math.floor(minutos / 60);
+  const m = minutos % 60;
+  return m === 0 ? `Faltam ${h} h` : `Faltam ${h} h ${String(m).padStart(2, '0')} min`;
+}
+
 /** Texto curto para o cabeçalho: "Aberto até 23:30" ou "Fechado ─ abre hoje às 18:00". */
 export function statusDaLoja(agora: Date, horarios: Horarios = LOJA.horarios): { aberta: boolean; texto: string } {
   if (isOpenNow(agora, horarios)) {

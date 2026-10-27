@@ -23,7 +23,7 @@ const nomeDia = (d: DiaSemana) => NOMES_DIA[d].replace('-feira', '');
 const maiuscula = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 
 /** Dias seguidos com o mesmo horário viram uma linha só. */
-function grupos(): readonly { rotulo: string; horario: string | null }[] {
+export function grupos(): readonly { rotulo: string; horario: string | null }[] {
   const saida: { dias: DiaSemana[]; horario: string | null }[] = [];
   for (const d of SEMANA) {
     const h = faixa(d);

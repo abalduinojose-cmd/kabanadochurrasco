@@ -5,8 +5,9 @@ import { CartaoLoja } from '@/components/inicio/CartaoLoja';
 import { Cupom } from '@/components/inicio/Cupom';
 import { AtalhosCardapio } from '@/components/inicio/AtalhosCardapio';
 import { BuscaNoCardapio } from '@/components/busca/BuscaNoCardapio';
-import { AvisoFechado } from '@/components/inicio/AvisoFechado';
+import { AvisoHorario } from '@/components/layout/AvisoHorario';
 import { PecaDeNovo } from '@/components/inicio/PecaDeNovo';
+import { ConviteCadastro } from '@/components/inicio/ConviteCadastro';
 import { Favoritos } from '@/components/inicio/Favoritos';
 import { Destaques } from '@/components/inicio/Destaques';
 import { SecaoCardapio } from '@/components/inicio/SecaoCardapio';
@@ -24,7 +25,9 @@ export const viewport: Viewport = { themeColor: '#120e0b' };
  * alternando, o logo grande e os dados da loja); por cima do pé dela sobe a
  * folha clara do cardápio, com o telhado da marca no alto: os atalhos das
  * seções com foto e o cardápio por seção (pratos em linhas, bebidas e doces em
- * prateleiras). Como receber fica para o fim, na sacola.
+ * prateleiras). Como receber fica para o fim, na sacola. Fora do horário, o
+ * aviso no alto da folha (`AvisoHorario`): dá para montar a sacola, não para
+ * finalizar.
  * Server Component; cliente só onde reage (capa, barra fixa, [+], prateleiras).
  */
 export default function Inicio() {
@@ -41,11 +44,12 @@ export default function Inicio() {
 
       <div className="relative -mt-7 rounded-t-[30px] bg-fundo pt-3 shadow-[0_-14px_30px_-20px_rgba(0,0,0,0.6)]">
         <BrandMark comFogo={false} className="mx-auto w-10 opacity-80" />
+        <AvisoHorario className="mx-4 mt-3" />
         <Cupom />
         <AtalhosCardapio secoes={secoes} />
 
         <main className="mx-auto max-w-2xl">
-          <AvisoFechado />
+          <ConviteCadastro />
           <PecaDeNovo />
           <ConviteInstalar />
           <Favoritos />

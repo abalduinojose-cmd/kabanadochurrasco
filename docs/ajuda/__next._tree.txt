@@ -1,2 +1,2 @@
-:HL["/kabanadochurrasco/_next/static/css/e3b0c11ffc7b7528.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"ajuda","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"ZVBqQBCG3VKbpWlhf8lO6"}
+:HL["/kabanadochurrasco/_next/static/css/0819211fe6da0764.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"ajuda","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"bn7ObR-j4VRdjzfPx3xWS"}

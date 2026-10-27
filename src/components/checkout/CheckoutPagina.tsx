@@ -19,9 +19,11 @@ import { useCliente } from '@/store/cliente';
 import { useEntrega } from '@/store/entrega';
 import { usePedidos } from '@/store/pedidos';
 import { useAgora } from '@/lib/use-agora';
+import { useLojaAberta } from '@/lib/use-loja-aberta';
+import { AvisoHorario } from '@/components/layout/AvisoHorario';
 import { useCupomAplicado } from '@/lib/use-cupom';
 import { useCupom } from '@/store/cupom';
-import { isOpenNow, nextOpening } from '@/lib/store-hours';
+import { nextOpening } from '@/lib/store-hours';
 import { formatBRL, parseBRL, toCents } from '@/lib/money';
 import { maskTelefone } from '@/lib/mask';
 import { FAIXA_ENTREGA, taxaEntrega, trocoPara, type ModoEntrega } from '@/lib/delivery';
@@ -72,7 +74,7 @@ export function CheckoutPagina() {
   const definirBairroGlobal = useEntrega((s) => s.definirBairro);
 
   const agora = useAgora();
-  const lojaAberta = agora === null ? null : isOpenNow(agora);
+  const lojaAberta = useLojaAberta();
   const proximaAbertura = agora === null ? null : nextOpening(agora);
 
   const form = useForm<FormCheckout>({
@@ -218,6 +220,7 @@ export function CheckoutPagina() {
 
   return (
     <form onSubmit={form.handleSubmit(enviar)} noValidate className="pb-56">
+      <AvisoHorario className="mx-4 mt-4" />
       {/* 1. Entrega ou retirada */}
       <Bloco titulo={v.modo === 'entrega' ? 'Entregar no endereço' : 'Retirar na loja'}>
         {LOJA.retiradaNoLocal && (
