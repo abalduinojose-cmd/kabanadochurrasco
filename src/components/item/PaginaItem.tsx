@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Stepper } from '@/components/ui/Stepper';
 import { ehFotoDeProduto } from '@/data/fotos';
+import { FotoProduto } from '@/components/inicio/FotoProduto';
 import { mostrarNaProximaTela } from '@/components/ui/Toast';
 import { BotaoCompartilhar } from '@/components/inicio/BotaoCompartilhar';
 import { PecaTambem } from '@/components/inicio/PecaTambem';
@@ -161,35 +162,30 @@ function Conteudo({ achado }: { achado: ItemComCategoria }) {
 
   return (
     <div className="min-h-dvh bg-fundo pb-36">
-      {foto ? (
-        <div className={`relative aspect-[4/3] max-h-[380px] w-full overflow-hidden ${ehFotoDeProduto(foto) ? 'bg-vitrine' : 'bg-foto'}`}>
-          <Image
-            src={foto}
-            alt={item.nome}
-            fill
-            priority
-            sizes="(max-width: 672px) 100vw, 672px"
-            className={ehFotoDeProduto(foto) ? 'object-contain px-[18%] pb-[8%] pt-[16%] mix-blend-multiply' : 'object-cover'}
-          />
-          <div className="absolute inset-x-3 top-[max(12px,env(safe-area-inset-top))] flex items-center justify-between">
-            <BotaoVoltar flutuante />
-            <div className="flex gap-2">
-              <BotaoFavorito itemId={item.id} className={ICONE_FLUTUANTE} />
-              <BotaoCompartilhar className={ICONE_FLUTUANTE} url={urlDoItem} titulo={item.nome} />
-            </div>
+      <div className="relative">
+        {foto ? (
+          <div className={`relative aspect-[4/3] max-h-[380px] w-full overflow-hidden ${ehFotoDeProduto(foto) ? 'bg-vitrine' : 'bg-foto'}`}>
+            <Image
+              src={foto}
+              alt={item.nome}
+              fill
+              priority
+              sizes="(max-width: 672px) 100vw, 672px"
+              className={ehFotoDeProduto(foto) ? 'object-contain px-[18%] pb-[8%] pt-[16%] mix-blend-multiply' : 'object-cover'}
+            />
+          </div>
+        ) : (
+          // Sem foto: o logo da casa no carvão, mais baixo que uma foto.
+          <FotoProduto alt="" sizes="(max-width: 672px) 100vw, 672px" className="aspect-[16/9] max-h-[300px] w-full" />
+        )}
+        <div className="absolute inset-x-3 top-[max(12px,env(safe-area-inset-top))] flex items-center justify-between">
+          <BotaoVoltar flutuante />
+          <div className="flex gap-2">
+            <BotaoFavorito itemId={item.id} className={ICONE_FLUTUANTE} />
+            <BotaoCompartilhar className={ICONE_FLUTUANTE} url={urlDoItem} titulo={item.nome} />
           </div>
         </div>
-      ) : (
-        <header className="sticky top-0 z-30 bg-fundo" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
-          <div className="mx-auto flex h-14 max-w-2xl items-center justify-between px-2">
-            <BotaoVoltar />
-            <div className="flex">
-              <BotaoFavorito itemId={item.id} className={ICONE_PLANO} />
-              <BotaoCompartilhar className={ICONE_PLANO} url={urlDoItem} titulo={item.nome} />
-            </div>
-          </div>
-        </header>
-      )}
+      </div>
 
       <div className="mx-auto max-w-2xl">
         <div className="px-4 pt-4">

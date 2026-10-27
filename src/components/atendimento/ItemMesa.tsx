@@ -11,7 +11,6 @@ import { ehFotoDeProduto, fotoDoItem } from '@/data/fotos';
 import { MAX_OBSERVACAO } from '@/data/grupos-extra';
 import { sugestoesDeObservacao } from '@/data/observacoes';
 import { formatBRL, toCents } from '@/lib/money';
-import { iconeDaCategoria } from '@/lib/icones-categoria';
 import { ehAlcoolico, escolhasIniciais, gruposDoItem, obrigatoriosFaltando, precoComOpcoes, type ItemComCategoria } from '@/lib/opcoes';
 import type { LinhaCarrinho, OpcaoEscolhida } from '@/types/carrinho';
 import type { OptionGroup } from '@/types/menu';
@@ -115,7 +114,7 @@ export function ItemMesa({ achado, aoFechar, aoAdicionar }: Props) {
               />
             </div>
           ) : (
-            <FotoProduto alt="" sizes="460px" className="aspect-[4/3] w-full md:aspect-auto md:h-[min(680px,calc(92dvh-96px))]" icone={iconeDaCategoria(categoria.id)} />
+            <FotoProduto alt="" sizes="460px" className="aspect-[4/3] w-full md:aspect-auto md:h-[min(680px,calc(92dvh-96px))]" />
           )}
         </div>
 

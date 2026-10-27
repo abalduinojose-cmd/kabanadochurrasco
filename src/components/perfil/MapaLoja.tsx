@@ -1,5 +1,5 @@
 import { MapPin } from 'lucide-react';
-import { BrandMark } from '@/components/layout/BrandMark';
+import { LogoKabana } from '@/components/layout/LogoKabana';
 import { AcoesEndereco } from './AcoesEndereco';
 import { GOOGLE } from '@/data/avaliacoes';
 import { LOJA } from '@/data/loja';
@@ -62,7 +62,7 @@ function Mosaico({ lat, lng }: { lat: number; lng: number }) {
       </span>
       <span aria-hidden className="absolute left-1/2 top-[56%] -translate-x-1/2 -translate-y-[calc(100%+10px)]">
         <span className="relative grid size-12 place-items-center rounded-[15px] bg-carvao shadow-[0_10px_20px_-8px_rgba(0,0,0,0.6)] ring-[3px] ring-white">
-          <BrandMark recorte className="w-9" />
+          <LogoKabana sizes="40px" alt="" className="w-[40px]" />
           <span className="absolute -bottom-[7px] left-1/2 size-3.5 -translate-x-1/2 rotate-45 rounded-[3px] bg-carvao" />
         </span>
       </span>

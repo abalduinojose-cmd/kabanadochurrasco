@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Clock, Instagram, MapPin, MessageCircle } from 'lucide-react';
 import { BarraTopo } from '@/components/layout/BarraTopo';
-import { BrandMark } from '@/components/layout/BrandMark';
+import { LogoKabana } from '@/components/layout/LogoKabana';
 import { StatusLoja } from '@/components/layout/StatusLoja';
 import { Horarios } from '@/components/perfil/Horarios';
 import { MapaLoja } from '@/components/perfil/MapaLoja';
@@ -23,7 +23,7 @@ export default function SobrePage() {
       <main className="mx-auto max-w-2xl pb-12">
         <header className="flex items-center gap-3 px-4 py-5">
           <span className="grid size-14 shrink-0 place-items-center rounded-full bg-carvao">
-            <BrandMark recorte className="w-[46px]" />
+            <LogoKabana sizes="46px" alt="" className="w-[46px]" />
           </span>
           <div className="min-w-0">
             <h1 className="text-[20px] font-extrabold leading-tight text-texto">{LOJA.nome}</h1>

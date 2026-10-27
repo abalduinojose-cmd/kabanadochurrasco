@@ -1,17 +1,19 @@
-import { ChevronRight, Star, Store } from 'lucide-react';
-import { BrandMark } from '@/components/layout/BrandMark';
+import { ChevronRight, MapPin, Star, Store } from 'lucide-react';
+import { LogoKabana } from '@/components/layout/LogoKabana';
 import { StatusLoja } from '@/components/layout/StatusLoja';
-import { Badge } from '@/components/ui/Badge';
 import { AbrirDetalhes } from './DetalhesLoja';
 import { LOJA } from '@/data/loja';
 import { formatBRL, toCents } from '@/lib/money';
 import { FAIXA_ENTREGA_CURTA } from '@/lib/delivery';
 
 /**
- * O cartão da loja, flutuando sobre a capa: o logo salta para fora do cartão,
- * nome e bairro, status e a nota do Google em pílulas (a nota e "Detalhes"
- * abrem a folha da loja) e a faixa com o que importa antes de pedir: tempo, taxa a partir de
- * e pedido mínimo. Como receber se escolhe no fim, na sacola.
+ * A fachada da loja, no carvão logo abaixo das fotos: o logo oficial grande no
+ * centro (sobe por cima do fim das fotos), o status e a nota do Google em
+ * pílulas, o painel com o que importa antes de pedir (tempo, taxa a partir de,
+ * pedido mínimo) e o atalho para endereço, horários e avaliações (a nota
+ * também abre a folha da loja). O cardápio entra por baixo, numa folha clara
+ * de cantos redondos que cobre o pé da fachada. Como receber se escolhe no
+ * fim, na sacola.
  */
 
 const menorTaxa = Math.min(...LOJA.fretes.map((f) => toCents(f.taxa)));
@@ -20,64 +22,59 @@ const nota = LOJA.nota;
 function Numero({ valor, rotulo }: { valor: React.ReactNode; rotulo: string }) {
   return (
     <div className="flex min-w-0 flex-col items-center gap-0.5 px-1 text-center">
-      <dt className="text-[11.5px] font-medium text-texto-2">{rotulo}</dt>
-      <dd className="order-first truncate text-[15px] font-extrabold tabular-nums tracking-[-0.01em] text-texto">{valor}</dd>
+      <dt className="text-[11.5px] font-medium text-white/55">{rotulo}</dt>
+      <dd className="order-first truncate text-[15px] font-extrabold tabular-nums tracking-[-0.01em] text-white">{valor}</dd>
     </div>
   );
 }
 
 export function CartaoLoja() {
   return (
-    <section className="relative z-10 -mt-9 px-3">
-      <div className="mx-auto max-w-2xl rounded-[26px] bg-cartao px-4 pb-4 pt-3 shadow-[0_0_0_1px_var(--color-borda),0_18px_40px_-20px_rgba(0,0,0,0.35)]">
-        <div className="flex items-start gap-3.5">
-          <div className="-mt-9 grid size-[68px] shrink-0 place-items-center overflow-hidden rounded-[22px] bg-carvao shadow-[0_10px_22px_-10px_rgba(0,0,0,0.6)] ring-4 ring-cartao">
-            <BrandMark recorte className="w-[54px]" />
-          </div>
-          <div className="min-w-0 flex-1 pt-0.5">
-            <h1 className="text-[21px] font-extrabold leading-tight tracking-[-0.02em] text-texto">{LOJA.nome}</h1>
-            <p className="mt-0.5 text-[13px] leading-snug text-texto-2">
-              {LOJA.tagline} • Posse, {LOJA.cidade}
-            </p>
-          </div>
-        </div>
+    <section
+      aria-label="A loja"
+      className="relative -mt-[146px] bg-[linear-gradient(to_bottom,transparent_146px,var(--color-brasa)_146px)] px-4 pb-10 text-center text-white"
+    >
+      <h1 className="relative mx-auto w-[180px]">
+        <LogoKabana prioridade sizes="180px" className="w-full drop-shadow-[0_18px_26px_rgba(0,0,0,0.6)]" alt={`${LOJA.nome}, ${LOJA.tagline.toLowerCase()}`} />
+      </h1>
 
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          <StatusLoja pilula />
-          {nota ? (
-            <AbrirDetalhes
-              rotulo={`Nota ${nota.valor.toFixed(1).replace('.', ',')} no Google, ${nota.total} avaliações. Ver avaliações`}
-              className="inline-flex h-7 min-h-7 items-center gap-1 rounded-full bg-[#fff6e5] px-2.5 text-[13px] font-bold text-texto active:brightness-95"
-            >
-              <Star className="size-3.5 fill-[#F5A623] text-[#F5A623]" aria-hidden />
-              {nota.valor.toFixed(1).replace('.', ',')}
-              <span className="font-medium text-texto-2">({nota.total})</span>
-            </AbrirDetalhes>
-          ) : (
-            <Badge tom="fogo">Novo no app</Badge>
-          )}
+      <div className="mt-3.5 flex flex-wrap items-center justify-center gap-2">
+        <StatusLoja escuro />
+        {nota && (
           <AbrirDetalhes
-            rotulo="Ver detalhes da loja"
-            className="-mr-1 ml-auto inline-flex min-h-10 items-center gap-0.5 rounded-full pl-2 pr-1 text-[13px] font-bold text-fogo-texto active:bg-fogo-suave"
+            rotulo={`Nota ${nota.valor.toFixed(1).replace('.', ',')} no Google, ${nota.total} avaliações. Ver avaliações`}
+            className="inline-flex h-7 min-h-7 items-center gap-1 rounded-full bg-white/10 px-2.5 text-[13px] font-bold text-white active:bg-white/15"
           >
-            Detalhes
-            <ChevronRight className="size-4" aria-hidden />
+            <Star className="size-3.5 fill-[#F5A623] text-[#F5A623]" aria-hidden />
+            {nota.valor.toFixed(1).replace('.', ',')}
+            <span className="font-medium text-white/60">({nota.total})</span>
           </AbrirDetalhes>
-        </div>
-
-        <dl className="mt-3.5 grid grid-cols-3 divide-x divide-borda rounded-[18px] bg-fundo-2 py-3">
-          <Numero valor={FAIXA_ENTREGA_CURTA} rotulo="entrega" />
-          <Numero valor={<span className="text-verde">{formatBRL(menorTaxa)}</span>} rotulo="taxa a partir de" />
-          <Numero valor={LOJA.pedidoMinimo > 0 ? formatBRL(toCents(LOJA.pedidoMinimo)) : 'Sem mínimo'} rotulo="pedido mínimo" />
-        </dl>
-
-        {LOJA.retiradaNoLocal && (
-          <p className="mt-2.5 flex items-center justify-center gap-1.5 text-[12.5px] text-texto-2">
-            <Store className="size-3.5" aria-hidden />
-            Retirada grátis na loja • {LOJA.pagamentos.length > 2 ? 'dinheiro, Pix e cartão' : LOJA.pagamentos.map((p) => p.label).join(', ')}
-          </p>
         )}
       </div>
+
+      <dl className="mx-auto mt-4 grid max-w-md grid-cols-3 divide-x divide-white/10 rounded-[20px] bg-white/[0.06] py-3 ring-1 ring-inset ring-white/10">
+        <Numero valor={FAIXA_ENTREGA_CURTA} rotulo="entrega" />
+        <Numero valor={<span className="text-[#6fe0a0]">{formatBRL(menorTaxa)}</span>} rotulo="taxa a partir de" />
+        <Numero valor={LOJA.pedidoMinimo > 0 ? formatBRL(toCents(LOJA.pedidoMinimo)) : 'Sem mínimo'} rotulo="pedido mínimo" />
+      </dl>
+
+      {LOJA.retiradaNoLocal && (
+        <p className="mt-3 flex items-center justify-center gap-1.5 text-[12.5px] text-white/60">
+          <Store className="size-3.5" aria-hidden />
+          Retirada grátis na loja • {LOJA.pagamentos.length > 2 ? 'dinheiro, Pix e cartão' : LOJA.pagamentos.map((p) => p.label).join(', ')}
+        </p>
+      )}
+
+      <AbrirDetalhes
+        rotulo="Ver endereço, horários e avaliações da loja"
+        className="mx-auto mt-1 inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 text-[13px] font-semibold text-white/80 active:bg-white/10"
+      >
+        <MapPin className="size-4 text-fogo" aria-hidden />
+        Posse, {LOJA.cidade}
+        <span aria-hidden className="text-white/30">•</span>
+        <span className="text-[#ff9a52]">Endereço e horários</span>
+        <ChevronRight className="-ml-0.5 size-4 text-[#ff9a52]" aria-hidden />
+      </AbrirDetalhes>
     </section>
   );
 }

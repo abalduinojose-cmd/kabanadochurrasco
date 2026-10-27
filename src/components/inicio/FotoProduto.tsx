@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import type { LucideIcon } from 'lucide-react';
-import { BrandMark } from '@/components/layout/BrandMark';
+import { LogoKabana } from '@/components/layout/LogoKabana';
 import { ehFotoDeProduto } from '@/data/fotos';
 
 /**
@@ -10,8 +9,8 @@ import { ehFotoDeProduto } from '@/data/fotos';
  * - Produto de marca (lata, garrafa, embalagem em fundo branco): mostrado
  *   inteiro, com respiro, e mesclado ao cinza-quente do quadro, então o branco
  *   da foto some e todas as latas ficam do mesmo jeito, como numa gôndola.
- * - Sem foto: com `icone`, o quadro quente da marca com o ícone da seção (as
- *   linhas ficam alinhadas sem fingir foto); sem ícone, a marca em marca d'água.
+ * - Sem foto: o logo da casa no carvão com uma brasa por trás, como a
+ *   fachada do Início (as linhas ficam alinhadas sem fingir foto).
  */
 
 type Props = {
@@ -23,25 +22,18 @@ type Props = {
   className?: string;
   /** Respiro em volta do produto de marca. */
   respiro?: string;
-  /** Ícone do quadro quando não há foto. */
-  icone?: LucideIcon;
 };
 
-export function FotoProduto({ src, alt, sizes, prioridade = false, className = 'aspect-square', respiro = 'p-[12%]', icone: Icone }: Props) {
+export function FotoProduto({ src, alt, sizes, prioridade = false, className = 'aspect-square', respiro = 'p-[12%]' }: Props) {
   if (!src) {
-    if (Icone) {
-      return (
-        <div
-          aria-hidden
-          className={`relative grid shrink-0 place-items-center overflow-hidden bg-[radial-gradient(120%_120%_at_30%_20%,#fff4ec_0%,#ffe2cc_60%,#ffd3b3_100%)] ${className}`}
-        >
-          <Icone className="size-[38%] text-fogo-texto/80" strokeWidth={1.5} />
-        </div>
-      );
-    }
     return (
-      <div aria-hidden className={`relative grid shrink-0 place-items-center overflow-hidden bg-foto ${className}`}>
-        <BrandMark className="w-3/5 opacity-25" />
+      <div
+        aria-hidden
+        className={`relative shrink-0 overflow-hidden bg-[radial-gradient(90%_75%_at_50%_100%,#4a1f04_0%,#1d1410_58%,#120e0b_100%)] ${className}`}
+      >
+        <div className="absolute inset-[18%]">
+          <LogoKabana preencher sizes={sizes} alt="" />
+        </div>
       </div>
     );
   }

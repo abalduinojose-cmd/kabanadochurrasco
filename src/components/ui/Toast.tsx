@@ -42,7 +42,7 @@ export function mostrarNaProximaTela(mensagem: string) {
 
 /** Acima de quê o toast flutua: das abas + sacola, da barra de ação, ou de nada. */
 const ALTURAS = {
-  abas: 'calc(var(--altura-abas) + var(--altura-sacola) + env(safe-area-inset-bottom) + 24px)',
+  abas: 'calc(var(--altura-abas) + var(--altura-sacola) + max(10px, env(safe-area-inset-bottom)) + 24px)',
   barra: 'calc(92px + env(safe-area-inset-bottom))',
   nada: 'calc(24px + env(safe-area-inset-bottom))',
 } as const;

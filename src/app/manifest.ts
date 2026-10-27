@@ -55,7 +55,7 @@ export default function manifest(): MetadataRoute.Manifest {
         type: 'image/png',
         purpose: 'maskable',
       },
-      { src: comBase('/icones/icone-512.png'), sizes: '512x512', type: 'image/png', purpose: 'any' },
+      { src: comBase('/icones/icone-any-512.png'), sizes: '512x512', type: 'image/png', purpose: 'any' },
     ],
   };
 }

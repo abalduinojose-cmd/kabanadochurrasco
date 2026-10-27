@@ -5,13 +5,12 @@ import { FotoProduto } from './FotoProduto';
 import { fotoDoItem } from '@/data/fotos';
 import { formatBRL, toCents } from '@/lib/money';
 import { precoVaria } from '@/lib/opcoes';
-import { iconeDaCategoria } from '@/lib/icones-categoria';
 import type { MenuItem } from '@/types/menu';
 
 /**
  * Cartão grande de prato, dois por linha (os Burgers especiais): foto 4:3 com
  * o [+] no canto, nome, o que vai no pão em duas linhas e o preço. Sem foto,
- * o quadro quente da marca com o ícone da seção. O link cobre o cartão.
+ * o logo da casa no carvão. O link cobre o cartão.
  */
 export function CartaoPrato({ item, categoriaId }: { item: MenuItem; categoriaId: string }) {
   const preco = formatBRL(toCents(item.preco));
@@ -25,7 +24,6 @@ export function CartaoPrato({ item, categoriaId }: { item: MenuItem; categoriaId
           alt={item.nome}
           sizes="(max-width: 672px) 46vw, 300px"
           className="aspect-[4/3] w-full"
-          icone={iconeDaCategoria(categoriaId)}
         />
         {!indisponivel && <BotaoMais itemId={item.id} tamanho="sm" className="absolute bottom-2 right-2" />}
       </div>

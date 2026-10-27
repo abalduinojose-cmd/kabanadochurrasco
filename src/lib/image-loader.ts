@@ -17,6 +17,8 @@ export default function carregador({ src, width }: { src: string; width: number;
   if (src.startsWith('/fotos/') && !src.startsWith('/fotos/mini/') && width <= MINI) {
     return `${base}/fotos/mini/${src.slice('/fotos/'.length)}`;
   }
+  // O logo tem uma versão de 360px para os lugares pequenos (avatar, barra fixa).
+  if (src === '/marca/logo-kabana.webp' && width <= 360) return `${base}/marca/logo-kabana-360.webp`;
   // `?g` marca a versão grande (e evita o aviso do Next de carregador que ignora a largura).
   return `${base}${src}?g`;
 }

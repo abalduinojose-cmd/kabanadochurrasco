@@ -100,9 +100,9 @@
   }
 }
 
-/* Espaço no fim do conteúdo para as barras fixas (abas + sacola). */
+/* Espaço no fim do conteúdo para as barras fixas (abas flutuantes + sacola). */
 @utility pb-barras {
-  padding-bottom: calc(var(--altura-abas) + var(--altura-sacola) + env(safe-area-inset-bottom) + 2rem);
+  padding-bottom: calc(var(--altura-abas) + var(--altura-sacola) + max(10px, env(safe-area-inset-bottom)) + 2rem);
 }
 
 @utility pb-seguro {

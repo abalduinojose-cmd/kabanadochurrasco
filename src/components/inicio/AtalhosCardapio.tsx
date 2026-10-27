@@ -20,9 +20,9 @@ export function AtalhosCardapio({ secoes }: { secoes: readonly SecaoMontada[] })
   if (lista.length === 0) return null;
 
   return (
-    <nav id="atalhos" aria-labelledby="titulo-atalhos" className="mx-auto max-w-2xl pt-6">
+    <nav id="atalhos" aria-labelledby="titulo-atalhos" className="mx-auto max-w-2xl pt-4">
       <div className="px-4">
-        <h2 id="titulo-atalhos" className="text-[21px] font-extrabold leading-tight tracking-[-0.02em] text-texto">
+        <h2 id="titulo-atalhos" className="text-[23px] font-extrabold leading-tight tracking-[-0.025em] text-texto">
           O que vai pedir hoje?
         </h2>
         <p className="mt-0.5 text-[13px] text-texto-2">Arraste para o lado e toque numa seção</p>

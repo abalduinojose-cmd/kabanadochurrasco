@@ -3,18 +3,20 @@
 import { useEffect, useRef, useState } from 'react';
 import { BotaoCompartilhar } from './BotaoCompartilhar';
 import { BotaoBusca } from '@/components/busca/BotaoBusca';
+import { LogoKabana } from '@/components/layout/LogoKabana';
 import { LOJA } from '@/data/loja';
 import { querMovimento } from '@/lib/motion/reduce';
 
 /**
- * A barra fixa do topo, que aparece quando os atalhos do cardápio saem da
- * tela: nome da loja, busca, compartilhar e as seções em pílulas, com a seção
- * da vez acesa (scroll-spy) e centralizada. Um toque leva à seção.
+ * A barra fixa do topo, no carvão da fachada, que aparece quando os atalhos do
+ * cardápio saem da tela: o logo pequeno com o nome, busca, compartilhar e as
+ * seções em abas de texto, com a da vez acesa e sublinhada em laranja
+ * (scroll-spy) e centralizada. Um toque leva à seção.
  */
 
 type Props = { secoes: readonly { id: string; nome: string }[] };
 
-const ALTURA = 56 + 52; // linha do nome + linha das pílulas
+const ALTURA = 56 + 48; // linha do logo + linha das abas
 
 export function BarraFixa({ secoes }: Props) {
   const [visivel, setVisivel] = useState(false);
@@ -63,18 +65,19 @@ export function BarraFixa({ secoes }: Props) {
   return (
     <header
       inert={!visivel}
-      className={`fixed inset-x-0 top-0 z-30 border-b border-divisor bg-cartao/95 backdrop-blur-md transition-[opacity,transform] duration-200 ease-out ${
+      className={`fixed inset-x-0 top-0 z-30 bg-brasa/95 text-white shadow-[0_10px_24px_-14px_rgba(0,0,0,0.6)] backdrop-blur-md transition-[opacity,transform] duration-200 ease-out ${
         visivel ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-3 opacity-0'
       }`}
       style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
-      <div className="mx-auto flex h-14 max-w-2xl items-center gap-1 pl-4 pr-2">
-        <p className="min-w-0 flex-1 truncate text-[17px] font-extrabold tracking-[-0.01em] text-texto">{LOJA.nome}</p>
-        <BotaoBusca className="grid size-11 place-items-center rounded-full text-texto hover:bg-fundo-2" />
-        <BotaoCompartilhar className="grid size-11 place-items-center rounded-full text-texto hover:bg-fundo-2" />
+      <div className="mx-auto flex h-14 max-w-2xl items-center gap-2.5 pl-3 pr-2">
+        <LogoKabana sizes="46px" alt="" className="w-[46px] shrink-0" />
+        <p className="min-w-0 flex-1 truncate text-[16px] font-extrabold tracking-[-0.01em]">{LOJA.nome}</p>
+        <BotaoBusca className="grid size-11 place-items-center rounded-full text-white hover:bg-white/10" />
+        <BotaoCompartilhar className="grid size-11 place-items-center rounded-full text-white hover:bg-white/10" />
       </div>
-      <nav aria-label="Seções do cardápio">
-        <div ref={trilho} className="sem-barra mx-auto flex h-[52px] max-w-2xl items-start gap-2 overflow-x-auto px-4">
+      <nav aria-label="Seções do cardápio" className="border-t border-white/[0.07]">
+        <div ref={trilho} className="sem-barra mx-auto flex h-12 max-w-2xl items-stretch gap-1 overflow-x-auto px-2">
           {secoes.map((s) => {
             const on = ativa === s.id;
             return (
@@ -87,11 +90,15 @@ export function BarraFixa({ secoes }: Props) {
                   setAtiva(s.id);
                   document.getElementById(s.id)?.scrollIntoView({ behavior: querMovimento() ? 'smooth' : 'auto', block: 'start' });
                 }}
-                className={`inline-flex h-9 min-h-9 shrink-0 items-center whitespace-nowrap rounded-full px-4 text-[13.5px] font-bold transition-colors ${
-                  on ? 'bg-carvao text-white' : 'bg-fundo-2 text-texto-2 hover:text-texto'
+                className={`relative inline-flex shrink-0 items-center whitespace-nowrap px-3 text-[14px] font-bold transition-colors ${
+                  on ? 'text-white' : 'text-white/55 hover:text-white/80'
                 }`}
               >
                 {s.nome}
+                <span
+                  aria-hidden
+                  className={`absolute inset-x-3 bottom-0 h-[3px] rounded-t-full bg-fogo transition-opacity duration-200 ${on ? 'opacity-100' : 'opacity-0'}`}
+                />
               </button>
             );
           })}

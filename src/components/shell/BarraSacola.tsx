@@ -35,9 +35,9 @@ export function BarraSacola() {
     <div
       data-alvo-carrinho
       className="fixed inset-x-0 z-40 px-3"
-      style={{ bottom: 'calc(var(--altura-abas) + env(safe-area-inset-bottom) + 10px)' }}
+      style={{ bottom: 'calc(var(--altura-abas) + max(10px, env(safe-area-inset-bottom)) + 8px)' }}
     >
-      <div ref={barra} className="mx-auto max-w-2xl" style={{ animation: 'sobe 300ms var(--ease-expo)' }}>
+      <div ref={barra} className="mx-auto max-w-md" style={{ animation: 'sobe 300ms var(--ease-expo)' }}>
         <Link
           href="/sacola"
           className="flex h-[var(--altura-sacola)] items-center gap-3 rounded-[18px] bg-carvao pl-2 pr-3 text-white shadow-[0_12px_28px_-10px_rgba(0,0,0,0.55)]"

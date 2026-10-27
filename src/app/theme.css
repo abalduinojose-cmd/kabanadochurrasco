@@ -24,6 +24,7 @@
   --color-fogo-texto: #b83f00; /* laranja como TEXTO sobre branco, 5,6:1 */
   --color-fogo-suave: #fff1e8; /* fundo de chip e cupom */
   --color-carvao: #0b0b0b; /* texto sobre o laranja, capa, avatar */
+  --color-brasa: #120e0b; /* a fachada escura do Início e a barra fixa: carvão quente, onde o logo assenta */
 
   /* ---------- semântica ---------- */
   --color-verde: #1e8e4b; /* taxa, promoção, aberto */
@@ -55,7 +56,7 @@
   --radius-pilula: 999px;
 
   /* ---------- barras ---------- */
-  --altura-abas: 56px;
+  --altura-abas: 62px; /* a barra de abas flutuante (sem a margem de baixo) */
   --altura-sacola: 56px;
 
   /* ---------- movimento ---------- */

@@ -1,11 +1,13 @@
 import { CartaoPrato } from './CartaoPrato';
+import { SeloBrasa } from './SeloBrasa';
 import { LinhaProduto } from './LinhaProduto';
 import { Vitrine } from './Vitrine';
 import type { SecaoMontada } from '@/lib/cardapio';
 
 /**
- * Uma seção do cardápio (Lanches, Espetinhos, Bebidas...): título grande com a
- * contagem e, dentro, cada categoria com o seu subtítulo. Pratos em linhas
+ * Uma seção do cardápio (Lanches, Espetinhos, Bebidas...): o selo da chama
+ * à frente do título grande, a contagem numa pílula e, dentro, cada categoria
+ * com o seu subtítulo. Pratos em linhas
  * (ou em cartões grandes, quando a categoria pede: os Burgers especiais);
  * bebidas e doces em prateleiras de produto.
  */
@@ -13,12 +15,13 @@ export function SecaoCardapio({ secao }: { secao: SecaoMontada }) {
   const varias = secao.blocos.length > 1;
 
   return (
-    <section id={secao.id} aria-labelledby={`titulo-${secao.id}`} className="scroll-mt-[118px] pt-7">
-      <header className="flex items-baseline justify-between gap-3 px-4">
-        <h2 id={`titulo-${secao.id}`} className="text-[22px] font-extrabold leading-tight tracking-[-0.02em] text-texto">
+    <section id={secao.id} aria-labelledby={`titulo-${secao.id}`} className="scroll-mt-[112px] pt-10">
+      <header className="flex items-center gap-2.5 px-4">
+        <SeloBrasa />
+        <h2 id={`titulo-${secao.id}`} className="min-w-0 flex-1 text-[23px] font-extrabold leading-tight tracking-[-0.025em] text-texto">
           {secao.nome}
         </h2>
-        <span className="shrink-0 text-[13px] font-medium text-texto-3">
+        <span className="shrink-0 rounded-full bg-fundo-2 px-2.5 py-1 text-[12px] font-bold tabular-nums text-texto-2">
           {secao.total} {secao.total === 1 ? 'item' : 'itens'}
         </span>
       </header>
@@ -26,7 +29,7 @@ export function SecaoCardapio({ secao }: { secao: SecaoMontada }) {
       {secao.formato === 'vitrine'
         ? secao.blocos.map((b) => <Vitrine key={b.categoria.id} titulo={b.titulo} categoriaId={b.categoria.id} itens={b.categoria.items} />)
         : secao.blocos.map((b) => (
-            <div key={b.categoria.id} id={b.categoria.id} className="scroll-mt-[118px] px-4 pt-4">
+            <div key={b.categoria.id} id={b.categoria.id} className="scroll-mt-[112px] px-4 pt-4">
               {varias && (
                 <h3 className="flex items-center gap-2 pb-1 text-[13px] font-bold uppercase tracking-[0.06em] text-fogo-texto">
                   {b.titulo}

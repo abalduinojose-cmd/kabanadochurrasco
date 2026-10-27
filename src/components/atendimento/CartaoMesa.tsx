@@ -5,7 +5,6 @@ import { Badge } from '@/components/ui/Badge';
 import { FotoProduto } from '@/components/inicio/FotoProduto';
 import { fotoDoItem } from '@/data/fotos';
 import { formatBRL, toCents } from '@/lib/money';
-import { iconeDaCategoria } from '@/lib/icones-categoria';
 import { ehAlcoolico, ehDireto, precoVaria } from '@/lib/opcoes';
 import type { MenuItem } from '@/types/menu';
 
@@ -43,7 +42,6 @@ export function CartaoMesa({ item, categoriaId, noPedido, aoAbrir, aoAdicionarDi
           alt=""
           sizes="(min-width: 1280px) 22vw, (min-width: 768px) 30vw, 46vw"
           className="aspect-[4/3] w-full"
-          icone={iconeDaCategoria(categoriaId)}
         />
         <span className="flex flex-1 flex-col px-4 pb-4 pt-3">
           <span className="line-clamp-2 text-[16px] font-extrabold leading-tight tracking-[-0.01em] text-texto">{item.nome}</span>

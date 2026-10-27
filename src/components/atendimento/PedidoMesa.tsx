@@ -6,7 +6,6 @@ import { Stepper } from '@/components/ui/Stepper';
 import { useComanda, selContaMesa, selItensComanda, selTotalComanda } from '@/store/comanda';
 import { fotoDoItem } from '@/data/fotos';
 import { formatBRL } from '@/lib/money';
-import { iconeDaCategoria } from '@/lib/icones-categoria';
 import { rotuloMesa } from '@/lib/mensagem-mesa';
 import { precoLinha, type LinhaCarrinho } from '@/types/carrinho';
 
@@ -37,7 +36,7 @@ function LinhaComanda({ linha }: { linha: LinhaCarrinho }) {
   ];
   return (
     <li className="flex gap-3 py-3.5">
-      <FotoProduto src={fotoDoItem(linha.itemId)} alt="" sizes="64px" className="size-16 rounded-[14px]" respiro="p-1.5" icone={iconeDaCategoria(linha.categoriaId)} />
+      <FotoProduto src={fotoDoItem(linha.itemId)} alt="" sizes="64px" className="size-16 rounded-[14px]" respiro="p-1.5" />
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-2">
           <p className="text-[15px] font-bold leading-tight text-texto">{linha.nome}</p>

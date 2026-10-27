@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
-import { BrandMark } from './BrandMark';
+import { LogoKabana } from './LogoKabana';
 import { Button } from '@/components/ui/Button';
 import { usePedidos } from '@/store/pedidos';
 import { useInstalacao } from '@/store/instalacao';
@@ -70,7 +70,7 @@ export function ConviteInstalar() {
     <div className="px-4 pt-4">
       <div className="relative flex items-center gap-3 rounded-cartao border border-borda bg-cartao py-3 pl-3 pr-12">
         <span className="grid size-10 shrink-0 place-items-center rounded-[10px] bg-carvao">
-          <BrandMark recorte className="w-8" />
+          <LogoKabana sizes="33px" alt="" className="w-[33px]" />
         </span>
         <div className="min-w-0 flex-1">
           <p className="text-[15px] font-bold leading-tight text-texto">Instale o app da Kabana</p>

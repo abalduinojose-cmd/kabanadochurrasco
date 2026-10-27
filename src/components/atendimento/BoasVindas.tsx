@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { ArrowRight, Star } from 'lucide-react';
-import { BrandMark } from '@/components/layout/BrandMark';
+import { LogoKabana } from '@/components/layout/LogoKabana';
 import { LOJA } from '@/data/loja';
 import { rotuloMesa } from '@/lib/mensagem-mesa';
 
@@ -20,7 +20,7 @@ export function BoasVindas({ mesa, aoEntrar }: { mesa: string; aoEntrar: () => v
 
       <span className="absolute left-6 top-6 flex items-center gap-3 sm:left-10 sm:top-10">
         <span className="grid size-14 place-items-center rounded-[18px] bg-black/70 ring-1 ring-white/15 backdrop-blur">
-          <BrandMark recorte className="w-11" />
+          <LogoKabana sizes="46px" alt="" className="w-[46px]" />
         </span>
         <span className="rounded-full bg-white/15 px-4 py-2 text-[15px] font-extrabold tracking-[0.08em] ring-1 ring-inset ring-white/20 backdrop-blur-md">
           {rotuloMesa(mesa)}

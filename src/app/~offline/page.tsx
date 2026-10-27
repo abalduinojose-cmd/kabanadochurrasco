@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { WifiOff } from 'lucide-react';
-import { BrandMark } from '@/components/layout/BrandMark';
+import { LogoKabana } from '@/components/layout/LogoKabana';
 import { LOJA } from '@/data/loja';
 
 export const metadata: Metadata = {
@@ -16,9 +16,7 @@ export const metadata: Metadata = {
 export default function Offline() {
   return (
     <main className="flex min-h-dvh flex-col items-center justify-center bg-fundo px-8 text-center">
-      <span className="grid size-20 place-items-center rounded-full bg-carvao">
-        <BrandMark recorte className="w-16" />
-      </span>
+      <LogoKabana sizes="168px" prioridade className="w-[168px]" />
 
       <h1 className="mt-6 text-[22px] font-extrabold leading-tight text-texto">Sem conexão agora</h1>
 

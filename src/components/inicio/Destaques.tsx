@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { BotaoMais } from './BotaoMais';
+import { SeloBrasa } from './SeloBrasa';
 import { fotoDoItem } from '@/data/fotos';
 import { destaquesDoCardapio, secaoDaCategoria } from '@/lib/cardapio';
 import { formatBRL, toCents } from '@/lib/money';
@@ -46,15 +47,16 @@ export function Destaques() {
   if (itens.length === 0) return null;
 
   return (
-    <section id="destaques" aria-labelledby="titulo-destaques" className="scroll-mt-[118px] pt-8">
-      <div className="flex items-end justify-between gap-3 px-4">
-        <div>
-          <h2 id="titulo-destaques" className="text-[21px] font-extrabold leading-tight tracking-[-0.02em] text-texto">
+    <section id="destaques" aria-labelledby="titulo-destaques" className="scroll-mt-[112px] pt-9">
+      <div className="px-4">
+        <div className="flex items-center gap-2.5">
+          <SeloBrasa />
+          <h2 id="titulo-destaques" className="min-w-0 flex-1 text-[23px] font-extrabold leading-tight tracking-[-0.025em] text-texto">
             Destaques
           </h2>
-          <p className="mt-0.5 text-[13px] text-texto-2">Direto da brasa, do jeito que sai da cozinha</p>
+          <span className="shrink-0 rounded-full bg-fundo-2 px-2.5 py-1 text-[12px] font-bold tabular-nums text-texto-2">{itens.length} pratos</span>
         </div>
-        <span className="shrink-0 pb-0.5 text-[13px] font-medium text-texto-3">{itens.length} pratos</span>
+        <p className="mt-1 pl-[42px] text-[13px] text-texto-2">Direto da brasa, do jeito que sai da cozinha</p>
       </div>
       <ul className="trilho mt-3.5 pb-2">
         {itens.map(({ item, categoriaId }, i) => (

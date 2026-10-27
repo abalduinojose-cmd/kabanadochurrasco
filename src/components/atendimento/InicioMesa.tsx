@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { ArrowRight, UserRound } from 'lucide-react';
-import { BrandMark } from '@/components/layout/BrandMark';
+import { LogoKabana } from '@/components/layout/LogoKabana';
 import { useComanda } from '@/store/comanda';
 import { LOJA } from '@/data/loja';
 
@@ -29,9 +29,7 @@ export function InicioMesa() {
 
       <div className="mx-auto flex min-h-dvh max-w-[760px] flex-col justify-center px-5 py-10 sm:px-8">
         <div className="flex items-center gap-3.5">
-          <span className="grid size-14 place-items-center rounded-[18px] bg-black ring-1 ring-white/15">
-            <BrandMark recorte className="w-11" />
-          </span>
+          <LogoKabana sizes="72px" alt="" className="w-[72px] shrink-0" />
           <div>
             <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-fogo">Atendimento na mesa</p>
             <h1 className="text-[26px] font-extrabold leading-tight tracking-[-0.02em] sm:text-[30px]">{LOJA.nome}</h1>

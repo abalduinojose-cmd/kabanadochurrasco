@@ -5,12 +5,11 @@ import { FotoProduto } from './FotoProduto';
 import { fotoDoItem } from '@/data/fotos';
 import { formatBRL, toCents } from '@/lib/money';
 import { precoVaria } from '@/lib/opcoes';
-import { iconeDaCategoria } from '@/lib/icones-categoria';
 import type { MenuItem } from '@/types/menu';
 
 /**
  * A linha de prato: nome, descrição em duas linhas, preço em negrito e o
- * quadro de 96px à direita (a foto, ou o ícone da seção quando não há foto),
+ * quadro de 96px à direita (a foto, ou o logo da casa quando não há foto),
  * com o [+] no canto. O link cobre a linha inteira (abre a página do item); o
  * [+] fica por cima dele. Indisponível fica apagado.
  */
@@ -37,7 +36,7 @@ export function LinhaProduto({ item, categoriaId }: { item: MenuItem; categoriaI
         </div>
       </div>
 
-      <FotoProduto src={foto} alt="" sizes="96px" className="size-24 rounded-[18px]" respiro="p-2" icone={iconeDaCategoria(categoriaId)} />
+      <FotoProduto src={foto} alt="" sizes="96px" className="size-24 rounded-[18px]" respiro="p-2" />
 
       {!indisponivel && (
         <>

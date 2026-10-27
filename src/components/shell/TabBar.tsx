@@ -7,8 +7,9 @@ import { ABAS, direcaoDaAba, indiceDaAba, type HrefAba } from './abas';
 import { useTransicaoDeAba } from './useTransicaoDeAba';
 
 /**
- * As quatro abas do iFood no rodapé: Início, Busca, Pedidos, Perfil.
- * Ícone + rótulo; a atual em laranja. Links de verdade (deep link, voltar).
+ * As quatro abas (Início, Busca, Pedidos, Perfil) numa barra flutuante de
+ * cantos redondos, solta das bordas. Ícone + rótulo; a atual ganha uma cápsula
+ * laranja-clara. Links de verdade (deep link, voltar).
  */
 
 const ICONES: Record<HrefAba, LucideIcon> = {
@@ -29,8 +30,8 @@ export function TabBar() {
   }, [router]);
 
   return (
-    <nav aria-label="Navegação principal" className="fixed inset-x-0 bottom-0 z-40 border-t border-divisor bg-cartao">
-      <div className="pb-seguro mx-auto grid h-[calc(var(--altura-abas)+env(safe-area-inset-bottom))] max-w-2xl grid-cols-4">
+    <nav aria-label="Navegação principal" className="pointer-events-none fixed inset-x-0 bottom-0 z-40 px-3 pb-[max(10px,env(safe-area-inset-bottom))]">
+      <div className="pointer-events-auto mx-auto grid h-[var(--altura-abas)] max-w-md grid-cols-4 gap-1 rounded-[24px] bg-cartao/95 p-1.5 shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_14px_34px_-14px_rgba(0,0,0,0.4)] backdrop-blur-md">
         {ABAS.map((aba, i) => {
           const Icone = ICONES[aba.href];
           const ativa = i === atual;
@@ -43,11 +44,11 @@ export function TabBar() {
                 e.preventDefault();
                 ir(aba.href, direcaoDaAba(atual, i));
               }}
-              className={`flex flex-col items-center justify-center gap-1 pt-1.5 text-[11px] font-semibold transition-colors ${
-                ativa ? 'text-fogo-texto' : 'text-texto-2 hover:text-texto'
+              className={`flex min-h-0 flex-col items-center justify-center gap-0.5 rounded-[18px] text-[11px] font-bold transition-colors ${
+                ativa ? 'bg-fogo-suave text-fogo-texto' : 'text-texto-2 hover:text-texto'
               }`}
             >
-              <Icone className="size-6" strokeWidth={ativa ? 2.2 : 1.8} aria-hidden />
+              <Icone className="size-[22px]" strokeWidth={ativa ? 2.3 : 1.8} aria-hidden />
               {aba.rotulo}
             </a>
           );

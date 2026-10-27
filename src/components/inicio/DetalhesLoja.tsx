@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { create } from 'zustand';
 import { BadgeCheck, Clock, CreditCard, ExternalLink, Instagram, MapPin, MessageCircle, Navigation, Star } from 'lucide-react';
 import { Folha } from '@/components/ui/Folha';
-import { BrandMark } from '@/components/layout/BrandMark';
+import { LogoKabana } from '@/components/layout/LogoKabana';
 import { StatusLoja } from '@/components/layout/StatusLoja';
 import { HorarioSemana } from '@/components/perfil/HorarioSemana';
 import { FormasPagamento } from '@/components/perfil/FormasPagamento';
@@ -128,7 +128,7 @@ export function DetalhesLoja() {
     <Folha aoFechar={fechar} titulo="Sobre a loja">
       <div className="flex items-center gap-3.5">
         <span className="grid size-14 shrink-0 place-items-center overflow-hidden rounded-[18px] bg-carvao">
-          <BrandMark recorte className="w-11" />
+          <LogoKabana sizes="46px" alt="" className="w-[46px]" />
         </span>
         <div className="min-w-0">
           <p className="text-[19px] font-extrabold leading-tight tracking-[-0.02em] text-texto">{LOJA.nome}</p>

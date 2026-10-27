@@ -47,8 +47,8 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image' },
   icons: {
     icon: [
-      { url: comBase('/icones/icone.svg'), type: 'image/svg+xml' },
-      { url: comBase('/icones/icone-192.png'), sizes: '192x192', type: 'image/png' },
+      { url: comBase('/icones/icone-48.png'), sizes: '48x48', type: 'image/png' },
+      { url: comBase('/icones/icone-any-512.png'), sizes: '512x512', type: 'image/png' },
     ],
     apple: comBase('/icones/apple-touch-icon.png'),
   },

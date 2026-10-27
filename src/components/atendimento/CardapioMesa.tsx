@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { BellRing, Check, ChevronRight, Search, ShoppingBag, X } from 'lucide-react';
-import { BrandMark } from '@/components/layout/BrandMark';
+import { LogoKabana } from '@/components/layout/LogoKabana';
 import { CartaoMesa } from './CartaoMesa';
 import { ItemMesa } from './ItemMesa';
 import { PedidoMesa } from './PedidoMesa';
@@ -247,7 +247,7 @@ export function CardapioMesa({ aoNovoCliente }: { aoNovoCliente: () => void }) {
       <aside className="hidden h-dvh flex-col bg-carvao text-white lg:flex">
         <div className="flex items-center gap-3 px-5 pb-5 pt-6">
           <span className="grid size-12 shrink-0 place-items-center rounded-[16px] bg-black ring-1 ring-white/15">
-            <BrandMark recorte className="w-10" />
+            <LogoKabana sizes="40px" alt="" className="w-[40px]" />
           </span>
           <div className="min-w-0">
             <p className="truncate text-[15px] font-extrabold leading-tight">Kabana do Churrasco</p>
@@ -298,7 +298,7 @@ export function CardapioMesa({ aoNovoCliente }: { aoNovoCliente: () => void }) {
         <header className="z-10 border-b border-divisor bg-cartao/95 backdrop-blur-md">
           <div className="flex items-center gap-3 px-4 py-3 sm:px-6">
             <span className="grid size-11 shrink-0 place-items-center rounded-[14px] bg-carvao lg:hidden">
-              <BrandMark recorte className="w-9" />
+              <LogoKabana sizes="36px" alt="" className="w-[36px]" />
             </span>
             <div className="min-w-0 flex-1">{campoBusca}</div>
             <div className="lg:hidden">{seloMesa(false)}</div>

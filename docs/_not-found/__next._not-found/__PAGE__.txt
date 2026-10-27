@@ -1,46 +1,31 @@
 1:"$Sreact.fragment"
-2:I[8500,["500","static/chunks/500-b13bb91f5a6311b6.js","446","static/chunks/446-659a49e05087896b.js","388","static/chunks/388-51f25b15fedaeb7e.js","180","static/chunks/180-0931414767f07525.js","719","static/chunks/719-4d636534086297c4.js","985","static/chunks/985-bac941565e3bcc74.js","263","static/chunks/263-7d60fbfcabfeaa7c.js","653","static/chunks/653-f378c3fdc5784369.js","193","static/chunks/app/(abas)/page-2ce6afb4222dbe3e.js"],""]
-3:I[484,[],"OutletBoundary"]
-4:"$Sreact.suspense"
-8:I[484,[],"ViewportBoundary"]
-9:I[484,[],"MetadataBoundary"]
-7:X
-25:X
-25:C
-0:{"buildId":"s3aK-NJCEVwwXVfU5GVWQ","data":[{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"flex min-h-dvh flex-col items-center justify-center bg-fundo px-8 text-center","children":[["$","span",null,{"className":"grid size-20 place-items-center rounded-full bg-carvao","children":["$","svg",null,{"viewBox":"250 0 700 300","className":"w-16","role":"presentation","aria-hidden":true,"children":[["$","defs",null,{"children":[["$","linearGradient",null,{"id":"kb-chama","x1":"0","y1":"1","x2":"0","y2":"0","children":[["$","stop",null,{"offset":"0%","stopColor":"#C24A00"}],["$","stop",null,{"offset":"55%","stopColor":"var(--color-fogo)"}],["$","stop",null,{"offset":"100%","stopColor":"#FFB15C"}]]}],["$","linearGradient",null,{"id":"kb-nucleo","x1":"0","y1":"1","x2":"0","y2":"0","children":[["$","stop",null,{"offset":"0%","stopColor":"var(--color-fogo)"}],["$","stop",null,{"offset":"100%","stopColor":"#FFD08A"}]]}]]}],["$","g",null,{"fill":"var(--color-fogo)","children":[["$","path",null,{"d":"M30 266 C235 195, 410 100, 578 32 L594 88 C425 152, 245 245, 30 266 Z"}],["$","path",null,{"d":"M30 266 C235 195, 410 100, 578 32 L594 88 C425 152, 245 245, 30 266 Z","transform":"translate(1200,0) scale(-1,1)"}]]}],["$","g",null,{"transform":"translate(600,4) scale(1.42)","children":[["$","path",null,{"fill":"url(#kb-chama)","d":"M0 0 C6 42, 34 56, 44 80 C48 68, 48 56, 45 46\n               C68 74, 78 108, 68 138 C56 174, 30 196, 0 196\n               C-30 196, -56 174, -68 138 C-78 108, -68 74, -45 46\n               C-48 56, -48 68, -44 80 C-34 56, -6 42, 0 0 Z"}],["$","path",null,{"fill":"var(--color-fogo)","opacity":"0.92","d":"M-92 62 C-84 92, -104 106, -104 132 C-104 162, -86 186, -62 192\n               C-84 176, -92 156, -88 134 C-84 112, -96 86, -92 62 Z"}],["$","path",null,{"fill":"var(--color-fogo)","opacity":"0.92","d":"M92 62 C84 92, 104 106, 104 132 C104 162, 86 186, 62 192\n               C84 176, 92 156, 88 134 C84 112, 96 86, 92 62 Z"}],["$","path",null,{"fill":"url(#kb-nucleo)","d":"M0 74 C7 104, 26 118, 26 144 C26 168, 14 184, 0 184\n               C-14 184, -26 168, -26 144 C-26 118, -7 104, 0 74 Z"}]]}]]}]}],["$","h1",null,{"className":"mt-6 text-[22px] font-extrabold leading-tight text-texto","children":"Essa página não existe"}],["$","p",null,{"className":"mx-auto mt-2 max-w-[30ch] text-[14px] text-texto-2","children":"O cardápio continua no lugar de sempre."}],["$","$L2",null,{"href":"/","className":"inline-flex items-center justify-center gap-2 rounded-botao font-bold transition-colors disabled:cursor-not-allowed bg-fogo text-carvao hover:brightness-95 active:brightness-90 disabled:bg-fundo-2 disabled:text-texto-3 h-[52px] px-5 text-[15px] mt-6","children":"Ver cardápio"}]]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L8",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, viewport-fit=cover"}],["$","meta","2",{"name":"theme-color","content":"#ffffff"}],["$","meta","3",{"name":"color-scheme","content":"light"}]]}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Kabana do Churrasco ─ Espetaria e Hamburgueria"}],["$","meta","1",{"name":"description","content":"Espetos na brasa, hambúrguer artesanal e porções em Petrópolis/RJ. Monte o pedido no app e envie direto pelo WhatsApp."}],["$","meta","2",{"name":"application-name","content":"Kabana"}],["$","link","3",{"rel":"manifest","href":"/kabanadochurrasco/manifest.webmanifest"}],["$","meta","4",{"name":"keywords","content":"espetinho,churrasco,hambúrguer artesanal,delivery,Petrópolis,espetaria Petrópolis"}],["$","meta","5",{"name":"apple-mobile-web-app-capable","content":"yes"}],["$","link","6",{"rel":"canonical","href":"https://abalduinojose-cmd.github.io/kabanadochurrasco/"}],["$","meta","7",{"name":"format-detection","content":"telephone=no"}],["$","meta","8",{"name":"mobile-web-app-capable","content":"yes"}],["$","meta","9",{"name":"apple-mobile-web-app-title","content":"Kabana"}],"$La","$Lb","$Lc","$Ld","$Le","$Lf","$L10","$L11","$L12","$L13","$L14","$L15","$L16","$L17","$L18","$L19","$L1a","$L1b","$L1c","$L1d","$L1e","$L1f","$L20","$L21"]}]}]}],null]}],"isPartial":"$@22","staleTime":"$7","varyParams":null},{"rsc":"$L23","isPartial":"$@24","staleTime":"$7","varyParams":"$25"}],"isUpgradeableISRFallback":false,"a":"$@26","rootVaryParams":null,"needsRuntimeRequest":"$@27"}
-28:I[6869,[],"IconMark"]
-29:I[7121,[],""]
-2a:I[4581,[],""]
-5:null
-a:["$","meta","10",{"name":"apple-mobile-web-app-status-bar-style","content":"default"}]
-b:["$","meta","11",{"property":"og:title","content":"Kabana do Churrasco ─ Espetaria e Hamburgueria"}]
-c:["$","meta","12",{"property":"og:description","content":"Espetos na brasa, hambúrguer artesanal e porções em Petrópolis/RJ. Monte o pedido no app e envie direto pelo WhatsApp."}]
-d:["$","meta","13",{"property":"og:url","content":"https://abalduinojose-cmd.github.io/kabanadochurrasco/"}]
-e:["$","meta","14",{"property":"og:site_name","content":"Kabana do Churrasco"}]
-f:["$","meta","15",{"property":"og:locale","content":"pt_BR"}]
-10:["$","meta","16",{"property":"og:image","content":"https://abalduinojose-cmd.github.io/kabanadochurrasco/opengraph-image.png?cc147d11686c4e78"}]
-11:["$","meta","17",{"property":"og:image:type","content":"image/png"}]
-12:["$","meta","18",{"property":"og:image:width","content":"1200"}]
-13:["$","meta","19",{"property":"og:image:height","content":"630"}]
-14:["$","meta","20",{"property":"og:image:alt","content":"Kabana do Churrasco, Espetaria e Hamburgueria"}]
-15:["$","meta","21",{"property":"og:type","content":"website"}]
-16:["$","meta","22",{"name":"twitter:card","content":"summary_large_image"}]
-17:["$","meta","23",{"name":"twitter:title","content":"Kabana do Churrasco ─ Espetaria e Hamburgueria"}]
-18:["$","meta","24",{"name":"twitter:description","content":"Espetos na brasa, hambúrguer artesanal e porções em Petrópolis/RJ. Monte o pedido no app e envie direto pelo WhatsApp."}]
-19:["$","meta","25",{"name":"twitter:image","content":"https://abalduinojose-cmd.github.io/kabanadochurrasco/opengraph-image.png?cc147d11686c4e78"}]
-1a:["$","meta","26",{"name":"twitter:image:alt","content":"Kabana do Churrasco, Espetaria e Hamburgueria"}]
-1b:["$","meta","27",{"name":"twitter:image:type","content":"image/png"}]
-1c:["$","meta","28",{"name":"twitter:image:width","content":"1200"}]
-1d:["$","meta","29",{"name":"twitter:image:height","content":"630"}]
-1e:["$","link","30",{"rel":"icon","href":"/kabanadochurrasco/icones/icone.svg","type":"image/svg+xml"}]
-1f:["$","link","31",{"rel":"icon","href":"/kabanadochurrasco/icones/icone-192.png","sizes":"192x192","type":"image/png"}]
-20:["$","link","32",{"rel":"apple-touch-icon","href":"/kabanadochurrasco/icones/apple-touch-icon.png"}]
-21:["$","$L28","33",{}]
-23:["$","$1","c",{"children":[null,["$","$L29",null,{"parallelRouterKey":"children","template":["$","$L2a",null,{}]}]]}]
-27:true
-7:300
-7:C
-26:0
-22:"$undefined"
-24:"$undefined"
-6:"$undefined"
+2:I[8437,["500","static/chunks/500-b13bb91f5a6311b6.js","446","static/chunks/446-659a49e05087896b.js","437","static/chunks/437-31dbaf582a8d7c47.js","719","static/chunks/719-4d636534086297c4.js","194","static/chunks/194-5b94ab1984fa649d.js","364","static/chunks/364-746101b39df57969.js","200","static/chunks/200-fb96748b5ca1c843.js","193","static/chunks/app/(abas)/page-af64087954ca818a.js"],"Image"]
+3:I[8500,["500","static/chunks/500-b13bb91f5a6311b6.js","446","static/chunks/446-659a49e05087896b.js","437","static/chunks/437-31dbaf582a8d7c47.js","719","static/chunks/719-4d636534086297c4.js","194","static/chunks/194-5b94ab1984fa649d.js","364","static/chunks/364-746101b39df57969.js","200","static/chunks/200-fb96748b5ca1c843.js","193","static/chunks/app/(abas)/page-af64087954ca818a.js"],""]
+4:I[484,[],"OutletBoundary"]
+5:"$Sreact.suspense"
+9:I[484,[],"ViewportBoundary"]
+a:I[484,[],"MetadataBoundary"]
+8:X
+16:X
+16:C
+0:{"buildId":"ZVBqQBCG3VKbpWlhf8lO6","data":[{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"flex min-h-dvh flex-col items-center justify-center bg-fundo px-8 text-center","children":[["$","$L2",null,{"src":"/marca/logo-kabana.webp","alt":"Kabana do Churrasco, espetaria e hamburgueria","width":720,"height":695,"sizes":"168px","priority":true,"className":"select-none h-auto w-[168px]","draggable":false}],["$","h1",null,{"className":"mt-6 text-[22px] font-extrabold leading-tight text-texto","children":"Essa página não existe"}],["$","p",null,{"className":"mx-auto mt-2 max-w-[30ch] text-[14px] text-texto-2","children":"O cardápio continua no lugar de sempre."}],["$","$L3",null,{"href":"/","className":"inline-flex items-center justify-center gap-2 rounded-botao font-bold transition-colors disabled:cursor-not-allowed bg-fogo text-carvao hover:brightness-95 active:brightness-90 disabled:bg-fundo-2 disabled:text-texto-3 h-[52px] px-5 text-[15px] mt-6","children":"Ver cardápio"}]]}],null,["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":"$@7","staleTime":"$8","varyParams":null},{"rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L9",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, viewport-fit=cover"}],["$","meta","2",{"name":"theme-color","content":"#ffffff"}],["$","meta","3",{"name":"color-scheme","content":"light"}]]}],["$","div",null,{"hidden":true,"children":["$","$La",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Kabana do Churrasco ─ Espetaria e Hamburgueria"}],["$","meta","1",{"name":"description","content":"Espetos na brasa, hambúrguer artesanal e porções em Petrópolis/RJ. Monte o pedido no app e envie direto pelo WhatsApp."}],["$","meta","2",{"name":"application-name","content":"Kabana"}],["$","link","3",{"rel":"manifest","href":"/kabanadochurrasco/manifest.webmanifest"}],["$","meta","4",{"name":"keywords","content":"espetinho,churrasco,hambúrguer artesanal,delivery,Petrópolis,espetaria Petrópolis"}],["$","meta","5",{"name":"apple-mobile-web-app-capable","content":"yes"}],["$","link","6",{"rel":"canonical","href":"https://abalduinojose-cmd.github.io/kabanadochurrasco/"}],["$","meta","7",{"name":"format-detection","content":"telephone=no"}],["$","meta","8",{"name":"mobile-web-app-capable","content":"yes"}],["$","meta","9",{"name":"apple-mobile-web-app-title","content":"Kabana"}],["$","meta","10",{"name":"apple-mobile-web-app-status-bar-style","content":"default"}],["$","meta","11",{"property":"og:title","content":"Kabana do Churrasco ─ Espetaria e Hamburgueria"}],["$","meta","12",{"property":"og:description","content":"Espetos na brasa, hambúrguer artesanal e porções em Petrópolis/RJ. Monte o pedido no app e envie direto pelo WhatsApp."}],["$","meta","13",{"property":"og:url","content":"https://abalduinojose-cmd.github.io/kabanadochurrasco/"}],["$","meta","14",{"property":"og:site_name","content":"Kabana do Churrasco"}],["$","meta","15",{"property":"og:locale","content":"pt_BR"}],["$","meta","16",{"property":"og:image","content":"https://abalduinojose-cmd.github.io/kabanadochurrasco/opengraph-image.png?ed44f67f68d80fd7"}],["$","meta","17",{"property":"og:image:type","content":"image/png"}],["$","meta","18",{"property":"og:image:width","content":"1200"}],["$","meta","19",{"property":"og:image:height","content":"630"}],["$","meta","20",{"property":"og:image:alt","content":"Kabana do Churrasco, Espetaria e Hamburgueria"}],["$","meta","21",{"property":"og:type","content":"website"}],["$","meta","22",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","23",{"name":"twitter:title","content":"Kabana do Churrasco ─ Espetaria e Hamburgueria"}],["$","meta","24",{"name":"twitter:description","content":"Espetos na brasa, hambúrguer artesanal e porções em Petrópolis/RJ. Monte o pedido no app e envie direto pelo WhatsApp."}],["$","meta","25",{"name":"twitter:image","content":"https://abalduinojose-cmd.github.io/kabanadochurrasco/opengraph-image.png?ed44f67f68d80fd7"}],"$Lb","$Lc","$Ld","$Le","$Lf","$L10","$L11","$L12"]}]}]}],null]}],"isPartial":"$@13","staleTime":"$8","varyParams":null},{"rsc":"$L14","isPartial":"$@15","staleTime":"$8","varyParams":"$16"}],"isUpgradeableISRFallback":false,"a":"$@17","rootVaryParams":null,"needsRuntimeRequest":"$@18"}
+19:I[6869,[],"IconMark"]
+1a:I[7121,[],""]
+1b:I[4581,[],""]
+6:null
+b:["$","meta","26",{"name":"twitter:image:alt","content":"Kabana do Churrasco, Espetaria e Hamburgueria"}]
+c:["$","meta","27",{"name":"twitter:image:type","content":"image/png"}]
+d:["$","meta","28",{"name":"twitter:image:width","content":"1200"}]
+e:["$","meta","29",{"name":"twitter:image:height","content":"630"}]
+f:["$","link","30",{"rel":"icon","href":"/kabanadochurrasco/icones/icone-48.png","sizes":"48x48","type":"image/png"}]
+10:["$","link","31",{"rel":"icon","href":"/kabanadochurrasco/icones/icone-any-512.png","sizes":"512x512","type":"image/png"}]
+11:["$","link","32",{"rel":"apple-touch-icon","href":"/kabanadochurrasco/icones/apple-touch-icon.png"}]
+12:["$","$L19","33",{}]
+14:["$","$1","c",{"children":[null,["$","$L1a",null,{"parallelRouterKey":"children","template":["$","$L1b",null,{}]}]]}]
+18:true
+8:300
+8:C
+17:0
+13:"$undefined"
+15:"$undefined"
+7:"$undefined"

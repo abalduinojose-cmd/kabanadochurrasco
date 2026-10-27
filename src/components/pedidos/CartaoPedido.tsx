@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Bike, ChevronRight, MessageCircle, RotateCcw, Store } from 'lucide-react';
-import { BrandMark } from '@/components/layout/BrandMark';
+import { LogoKabana } from '@/components/layout/LogoKabana';
 import { Button, LinkBotao } from '@/components/ui/Button';
 import { useCarrinho } from '@/store/cart';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
@@ -39,7 +39,7 @@ export function CartaoPedido({ pedido, emAndamento = false }: { pedido: Pedido; 
       <div className="p-4">
         <Link href={`/pedido?id=${encodeURIComponent(pedido.id)}`} className="flex items-center gap-3">
           <span className="grid size-10 shrink-0 place-items-center rounded-full bg-carvao">
-            <BrandMark recorte className="w-8" />
+            <LogoKabana sizes="33px" alt="" className="w-[33px]" />
           </span>
           <span className="min-w-0 flex-1">
             <span className="block truncate text-[15px] font-bold text-texto">Kabana do Churrasco</span>

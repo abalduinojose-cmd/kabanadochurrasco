@@ -7,7 +7,7 @@ import { ComoReceber } from './ComoReceber';
 import { DesfazerToast } from '@/components/cart/DesfazerToast';
 import { PecaTambem } from '@/components/inicio/PecaTambem';
 import { useEscolhaEntrega } from '@/components/inicio/EscolhaEntrega';
-import { BrandMark } from '@/components/layout/BrandMark';
+import { LogoKabana } from '@/components/layout/LogoKabana';
 import { StatusLoja } from '@/components/layout/StatusLoja';
 import { LinkBotao } from '@/components/ui/Button';
 import { Skeleton } from '@/components/ui/Skeleton';
@@ -75,7 +75,7 @@ export function Sacola() {
       {/* A loja, como no topo da sacola do iFood. */}
       <div className="flex items-center gap-3 px-4 pt-4">
         <span className="grid size-11 shrink-0 place-items-center overflow-hidden rounded-full bg-carvao">
-          <BrandMark recorte className="w-9" />
+          <LogoKabana sizes="36px" alt="" className="w-[36px]" />
         </span>
         <div className="min-w-0 flex-1">
           <p className="truncate text-[15px] font-extrabold text-texto">{LOJA.nome}</p>

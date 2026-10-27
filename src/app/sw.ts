@@ -36,12 +36,16 @@ const OFFLINE = BASE ? `${BASE}/~offline/` : '/~offline';
  * nova. Sem esta entrada, o fallback aponta para uma página que nunca foi
  * guardada e a abertura fria sem rede cai na tela de erro do navegador.
  */
-const REVISAO_OFFLINE = '2';
+const REVISAO_OFFLINE = '3';
+/** O logo da página offline (as duas versões que o carregador pode pedir). Bump ao trocar o arquivo. */
+const REVISAO_LOGO = '1';
 
 const serwist = new Serwist({
   precacheEntries: [
     ...(self.__SW_MANIFEST ?? []),
     { url: OFFLINE, revision: REVISAO_OFFLINE },
+    { url: `${BASE}/marca/logo-kabana-360.webp`, revision: REVISAO_LOGO },
+    { url: `${BASE}/marca/logo-kabana.webp?g`, revision: REVISAO_LOGO },
   ],
   skipWaiting: true,
   clientsClaim: true,
