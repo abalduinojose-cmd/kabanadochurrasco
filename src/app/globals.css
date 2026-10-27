@@ -137,6 +137,26 @@
   }
 }
 
+/* Fio de progresso da barra fixa do Início: enche conforme a página rola.
+   Scroll-driven (só CSS); sem suporte, fica vazio e não aparece. */
+@keyframes encher-progresso {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.progresso-rolagem {
+  transform: scaleX(0);
+}
+@supports (animation-timeline: scroll()) {
+  .progresso-rolagem {
+    animation: encher-progresso linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
 /* A faixa "Ver sacola" nasce dentro da doca: a doca cresce para cima. */
 @keyframes doca-sacola {
   from {

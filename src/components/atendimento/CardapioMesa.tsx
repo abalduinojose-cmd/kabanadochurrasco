@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
-import { BellRing, Check, ChevronRight, Search, ShoppingBag, X } from 'lucide-react';
+import { BellRing, Check, ChevronRight, LayoutGrid, Search, ShoppingBag, X } from 'lucide-react';
 import { LogoKabana } from '@/components/layout/LogoKabana';
 import { AvisoHorario } from '@/components/layout/AvisoHorario';
 import { useLojaAberta } from '@/lib/use-loja-aberta';
@@ -57,6 +57,7 @@ export function CardapioMesa({ aoNovoCliente }: { aoNovoCliente: () => void }) {
   const enviados = useComanda((s) => s.enviados);
   const adicionar = useComanda((s) => s.adicionar);
   const registrarEnvio = useComanda((s) => s.registrarEnvio);
+  const voltarAsMesas = useComanda((s) => s.voltarAsMesas);
   const total = useComanda(selTotalComanda);
   const itens = useComanda(selItensComanda);
   const conta = useComanda(selContaMesa);
@@ -258,6 +259,16 @@ export function CardapioMesa({ aoNovoCliente }: { aoNovoCliente: () => void }) {
             <p className="text-[12px] text-white/55">Cardápio da mesa</p>
           </div>
         </div>
+        <div className="px-3 pb-3">
+          <button
+            type="button"
+            onClick={voltarAsMesas}
+            className="flex h-11 w-full items-center gap-2.5 rounded-[14px] bg-white/[0.06] px-3 text-[14px] font-bold text-white/85 ring-1 ring-inset ring-white/10 hover:bg-white/[0.1]"
+          >
+            <LayoutGrid className="size-[18px] text-fogo" aria-hidden />
+            Todas as mesas
+          </button>
+        </div>
         <nav aria-label="Seções do cardápio" className="min-h-0 flex-1 overflow-y-auto px-3">
           <ul className="space-y-1">
             {secoes.map((s) => {
@@ -301,7 +312,16 @@ export function CardapioMesa({ aoNovoCliente }: { aoNovoCliente: () => void }) {
       <main className="flex h-dvh min-w-0 flex-col">
         <header className="z-10 border-b border-divisor bg-cartao/95 backdrop-blur-md">
           <div className="flex items-center gap-3 px-4 py-3 sm:px-6">
-            <span className="grid size-11 shrink-0 place-items-center rounded-[14px] bg-carvao lg:hidden">
+            <button
+              type="button"
+              onClick={voltarAsMesas}
+              aria-label="Voltar para todas as mesas"
+              className="inline-flex h-11 shrink-0 items-center gap-2 rounded-[14px] bg-carvao px-3 text-[14px] font-bold text-white lg:hidden"
+            >
+              <LayoutGrid className="size-[18px] text-fogo" aria-hidden />
+              <span className="hidden sm:inline">Mesas</span>
+            </button>
+            <span className="hidden size-11 shrink-0 place-items-center rounded-[14px] bg-carvao sm:grid lg:hidden">
               <LogoKabana sizes="36px" alt="" className="w-[36px]" />
             </span>
             <div className="min-w-0 flex-1">{campoBusca}</div>

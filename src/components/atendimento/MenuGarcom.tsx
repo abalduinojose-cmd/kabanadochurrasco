@@ -11,8 +11,9 @@ import { rotuloMesa } from '@/lib/mensagem-mesa';
 /**
  * O menu do garçom, aberto segurando o selo da mesa: a mesa e o atendente,
  * os pedidos que saíram pelo tablet (hora, valor, por onde), a conta da mesa
- * e as ações: novo cliente (volta às boas-vindas), trocar de mesa, encerrar a
- * mesa (dois toques), tela cheia e sair do atendimento.
+ * e as ações: novo cliente (volta às boas-vindas), voltar às mesas (esta
+ * continua em atendimento), encerrar a mesa (dois toques), tela cheia e sair
+ * do atendimento.
  */
 
 type Props = { aoFechar: () => void; aoNovoCliente: () => void };
@@ -24,7 +25,7 @@ export function MenuGarcom({ aoFechar, aoNovoCliente }: Props) {
   const garcom = useComanda((s) => s.garcom);
   const enviados = useComanda((s) => s.enviados);
   const conta = useComanda(selContaMesa);
-  const trocarMesa = useComanda((s) => s.trocarMesa);
+  const voltarAsMesas = useComanda((s) => s.voltarAsMesas);
   const encerrarMesa = useComanda((s) => s.encerrarMesa);
   const [confirmando, setConfirmando] = useState(false);
   const [telaCheia, setTelaCheia] = useState(false);
@@ -92,9 +93,9 @@ export function MenuGarcom({ aoFechar, aoNovoCliente }: Props) {
           <UserRoundCheck className="size-5 text-fogo-texto" aria-hidden />
           Entregar ao cliente (tela de boas-vindas)
         </button>
-        <button type="button" onClick={trocarMesa} className={acao}>
+        <button type="button" onClick={voltarAsMesas} className={acao}>
           <ArrowLeftRight className="size-5 text-fogo-texto" aria-hidden />
-          Trocar de mesa
+          Voltar às mesas (esta continua aberta)
         </button>
         <button type="button" onClick={() => void alternarTelaCheia()} className={acao}>
           <Expand className="size-5 text-fogo-texto" aria-hidden />
